@@ -25,12 +25,12 @@ function App() {
           <Form>
             <Form.Group controlId="formUsername">
               <Form.Control type="email" placeholder="Enter email" />
-              <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
-              </Form.Text>
             </Form.Group>
             <Form.Group controlId="formPassword">
               <Form.Control type="password" placeholder="Password" />
+              <Form.Text className="text-muted" style={{fontSize: 11}}>
+                We'll never share your email or password with anyone else.
+              </Form.Text>
             </Form.Group>
           </Form>
           <Button style={{width: '100%' }}
