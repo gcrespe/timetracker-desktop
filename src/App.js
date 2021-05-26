@@ -3,7 +3,7 @@ import logo from './assets/logo.svg';
 import dev from './assets/code_login.svg'
 import './App.css';
 import { Link, useHistory } from 'react-router-dom'
-import { Button, Form, FormGroup, FormLabel, FormControl} from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 
 function App() {
 
