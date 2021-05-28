@@ -9,12 +9,14 @@ function Home() {
       <SideMenu />
       <div className="HomeSection">
         <div className="Section">
-        <img src={home} className="dev-home" alt="logo" style={{height: '100%', width: '40%'}}/>
-          <div style={{fontSize: '40px', color: '#000000'}}>
-          Welcome to your new 
+          <img src={home} className="dev-home" alt="logo" style={{height: '80%', width: '30%'}}/>
+          <div>
+            <div style={{fontSize: '30px'}}>
+            Welcome, Giuliano. You have 
+            </div>
           </div>
-          <div style={{textAlign: 'left'}}>
-            lifestyle
+          <div className="YourSummary">
+            Your summary
           </div>
         </div>
         <div className="DownSection">

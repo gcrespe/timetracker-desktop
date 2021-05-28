@@ -23,18 +23,21 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
 }
 
 .Icon {
-    padding-top: 25%;
     width: 100%;
-    height: 10vh;
+    height: 15vh;
 }
 
 .Icon:hover{
     background-color: #181c22;
-    transition: 0.7s;
+    height: 12vh;
+    border-width: 1px;
+    border-color: #26303d;
+    transition: 0.7s ease-out;
+    transition-timing-function: ease-out;
+    padding-top: 35%;
 }
 
   

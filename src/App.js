@@ -9,6 +9,8 @@ function App() {
 
   const history = useHistory();
   const [loginTry, setLoginTry] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleLoginClick = () => {
     setLoginTry(!loginTry);
@@ -27,17 +29,32 @@ function App() {
               <Form.Control type="email" placeholder="Enter email" />
             </Form.Group>
             <Form.Group controlId="formPassword">
-              <Form.Control type="password" placeholder="Password" />
-              <Form.Text className="text-muted" style={{fontSize: 11}}>
+              <Form.Control type="password" placeholder="Password" onChange={(a) => setUsername(a)}/>
+              <Form.Text className="text-muted" style={{fontSize: 10}}>
                 We'll never share your email or password with anyone else.
               </Form.Text>
             </Form.Group>
           </Form>
-          <Button style={{width: '100%' }}
-            onClick={ () => handleLoginClick(true) }>
-            Login
-            <Link to="/home"></Link>
-          </Button>
+          <>
+            <style type="text/css">
+              {`
+              .btn-outline-secondary {
+                border-color: #181c22;
+                color: #181c22;
+              }
+              .btn-outline-secondary:hover {
+                background-color: #181c22;
+                color: #ffffff;
+                border-color: #181c22;
+              }
+              `}
+            </style>
+            <Button style={{width: '100%' }}
+              variant="outline-secondary"
+              onClick={() => handleLoginClick(true) }>
+              Login
+            </Button>
+          </>
         </div>
         <div style={{fontSize: 12, color: '#47566b', marginTop: '20%'}}>
           Powered by: TTDevTeam

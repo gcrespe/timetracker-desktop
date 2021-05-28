@@ -24,7 +24,7 @@ const SideMenu = () => {
         <div className="Icon" onClick={() => handleClickPageRedirect("home")}>
           <BiHomeAlt color="#a7abb3" size="25"/>
         </div>
-        <div className="Icon" onClick={() => handleClickPageRedirect("home")}>
+        <div className="Icon" onClick={() => handleClickPageRedirect("newTask")}>
           <BsPencilSquare color="#a7abb3" size="25"/>
         </div>
         <div className="Icon" onClick={() => handleClickPageRedirect("calendar")}>

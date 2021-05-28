@@ -14,12 +14,14 @@
 }
 
 .Section {
-    height: 30vh;
+    padding-top: 5%;
+    height: 35vh;
     width: 100%;
     display: flex;
     flex-direction: row;
-    color: '#000000';
-    font-size: 40px;
+    justify-content: space-around;
+    color: #262c37;
+    font-size: 30px;
 }
 
 .DownSection {
@@ -35,6 +37,7 @@
     justify-content: space-around;
     flex-direction: row;
     padding-bottom: 2%;
+    letter-spacing: 3px
 }
 
 .Daily{
@@ -45,9 +48,18 @@
     justify-content: space-around;
     flex-direction: row;
 }
+
 .SummarySection {
     height: 90%;
     width: 30%;
+}
+
+.YourSummary {
+    margin-top: -2.5%;
+    padding-left: 5%;
+    width: 30%;
+    justify-content: center;
+    color: #a7abb3;
 }
 
 
