@@ -28,15 +28,12 @@
 .Icon {
     width: 100%;
     height: 15vh;
+    transition: 0.7s
 }
 
 .Icon:hover{
     background-color: #181c22;
     height: 12vh;
-    border-width: 1px;
-    border-color: #26303d;
-    transition: 0.7s ease-out;
-    transition-timing-function: ease-out;
     padding-top: 35%;
 }
 

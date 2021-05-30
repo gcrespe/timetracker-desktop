@@ -16,7 +16,13 @@ function Home() {
             </div>
           </div>
           <div className="YourSummary">
+            <div style={{marginRight: '24%', fontSize: 24, marginBottom: '2%'}}>
+
             Your summary
+            </div>
+            <div className="SummaryInfo">
+
+            </div>
           </div>
         </div>
         <div className="DownSection">
@@ -26,12 +32,21 @@ function Home() {
           <div className="Daily">
             <div className="SummarySection">
               Projeto X
+              <div className="SummaryInfo">
+
+              </div>
             </div>
             <div className="SummarySection">
               Projeto Y
+              <div className="SummaryInfo">
+
+              </div>
             </div>
             <div className="SummarySection">
               Projeto Z
+              <div className="SummaryInfo">
+
+              </div>
             </div>
           </div>
         </div>
