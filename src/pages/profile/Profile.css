@@ -7,7 +7,7 @@
     flex-direction: row;
   }
 
-.HomeSection { 
+.ProfileHomeSection { 
     height: 100vh;
     width: 96%;
     display: flex;
@@ -16,4 +16,66 @@
     align-items: center;
     color: #a7abb3;
 }
-  
+
+.ProfileHeaderWrapper {
+  width: 70%;
+  height: 30vh;
+}
+
+.ProfileHeader {
+  width: 100%;
+  height: 35vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.ProfileBody {
+  width: 100%;
+  height: 70vh;
+}
+
+.ProfilePicture {
+  width: 25vh;
+  height: 25vh;
+  border-radius: 50%;
+  background-color: #222830;
+}
+
+.ProfileName {
+  width: 50vh;
+  letter-spacing: 2px;
+  margin-top: 10%;
+  height: 100%;
+  text-align: center;
+  font-size: 30px;
+}
+
+.ProfileText {
+  font-size: 16px;
+  height: 5vh;
+  color: #2e3443;
+  transition: 0.7s;
+}
+
+.ProfileText:hover {
+  color: #656a79;
+} 
+
+.Tab {
+  width: 45vh;
+  height: '100%';
+  border-bottom: solid #26303d;
+  border-width: 1px;
+  transition: 0.7s;
+}
+
+.Tab:hover {
+  width: 50vh;
+  border-color: #5d6066;
+}
+
+.profile-picture {
+  color: #ffffff;
+}

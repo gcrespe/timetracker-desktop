@@ -18,7 +18,6 @@ const NewTask = () => {
 
     return (
         <div className="Page">
-            <SideMenu />
             <div className="HomeSection">
                 <div className="Title">
                     <div className="tit1">

@@ -5,7 +5,6 @@ const TaskList = () => {
 
     return (
         <div className="Page">
-            <SideMenu />
             <div className="HomeSection">
                 
             </div>

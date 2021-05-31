@@ -5,8 +5,6 @@ import SideMenu from '../../components/SideMenu/SideMenu.jsx'
 function Home() {
   
   return (
-    <div className="Page">
-      <SideMenu />
       <div className="HomeSection">
         <div className="Section">
           <img src={home} className="dev-home" alt="logo" style={{height: '80%', width: '30%'}}/>
@@ -51,7 +49,6 @@ function Home() {
           </div>
         </div>
       </div>
-    </div>
   );
 }
 

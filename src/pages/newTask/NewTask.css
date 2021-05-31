@@ -5,18 +5,18 @@
     height: 100vh;
     display: flex;
     flex-direction: row;
-  }
+}
 
 .HomeSection { 
-    height: 100vh;
-    width: 94%;
     display: flex;
+    margin-left: -2%;
+    width: '100%';
     flex-direction: column;
     color: #a7abb3;
+    justify-content: space-around;
 }
 
 .Title {
-    width: 95%;
     height: 20vh;
     display: flex;
 }
@@ -62,7 +62,7 @@
 .NewTaskForm2 {
     margin-left: 5%;
     margin-top: 11%;
-    width: 40%;
+    width: 42.9%;
     height: 72%;
     display: flex;
     flex-direction: column;
@@ -73,7 +73,7 @@
 
 .NewTaskFormInner {
     height: 100%;
-    width: 80%;
+    width: 95%;
     margin-left: 10%;
 }
   

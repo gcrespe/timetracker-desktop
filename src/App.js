@@ -61,9 +61,6 @@ function App() {
         </div>
       </div>
       <div className="ImageSection">
-        <div className="ImageText">
-          asdasd
-        </div>
         <div className="LogoWrapper">
           <img src={logo} className="App-logo" alt="logo" />
         </div>
