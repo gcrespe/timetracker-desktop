@@ -6,7 +6,6 @@ import Home from './pages/home/Home.jsx'
 import Profile from './pages/profile/Profile.jsx'
 import Calendar from './pages/calendar/Calendar.jsx'
 import TaskList from './pages/taskList/TaskList.jsx'
-import NewTask from './pages/newTask/NewTask.jsx'
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Switch, Route } from 'react-router-dom' 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -22,7 +21,6 @@ ReactDOM.render(
             <Route path="/profile" component={Profile} />
             <Route path="/calendar" component={Calendar} />
             <Route path="/taskList" component={TaskList} />
-            <Route path="/newTask" component={NewTask} />
           </SideMenu>
       </Switch>
     </BrowserRouter>

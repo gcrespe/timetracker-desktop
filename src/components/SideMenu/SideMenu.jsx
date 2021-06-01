@@ -26,14 +26,11 @@ const SideMenu = (props) => {
           <div className="Icon" onClick={() => handleClickPageRedirect("home")}>
             <BiHomeAlt color="#a7abb3" size="25"/>
           </div>
-          <div className="Icon" onClick={() => handleClickPageRedirect("newTask")}>
-            <BsPencilSquare color="#a7abb3" size="25"/>
+          <div className="Icon" onClick={() => handleClickPageRedirect("taskList")}>
+            <BsCardList color="#a7abb3" size="25"/>
           </div>
           <div className="Icon" onClick={() => handleClickPageRedirect("calendar")}>
             <BiCalendarAlt color="#a7abb3" size="25"/>
-          </div>
-          <div className="Icon" onClick={() => handleClickPageRedirect("taskList")}>
-            <BsCardList color="#a7abb3" size="25"/>
           </div>
         </div>
         <div className="SecondaryIcon">

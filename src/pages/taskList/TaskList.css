@@ -7,103 +7,79 @@
     flex-direction: row;
   }
 
-.MenuSection { 
-    height: 100vh;
-    width: 6%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #26303d;
-}
-
-.LogoWrapper {
-    padding-top: 19%;
-}
-
-.CentralIcons {
-    height: 60vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-.SecondaryIcon {
-    height: 20vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.Icon {
-    padding-top: 25%;
-    width: 100%;
-    height: 10vh;
-}
-
-.Icon:hover{
-    background-color: #181c22;
-    transition: 0.7s;
-}
-
-.HomeSection { 
+.HomeSectionTaskList { 
     height: 100vh;
     width: 96%;
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     color: #a7abb3;
 }
 
-.UpperSection {
-    height: 30vh;
-    width: 100%;
-    background-color: #a7abb3;
+.List {
+    width: 68%;
+    height: 90vh;
     display: flex;
-    flex-direction: row;
-    color: '#000000';
-    font-size: 60px;
+    flex-direction: column;
 }
 
-.LowerSection {
-    height: 60vh;
-    width: 100%;
-}
-
-.TitleLowerSection {
-    font-size: 30px;
-    height: 5vh;
+.Resume {
+    width: 28%;
+    height: 90vh;
     display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex-direction: row;
-    padding-bottom: 2%;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.DailySummary {
-    height: 55vh;
+.ListItems {
+    overflow-y: scroll;
+    height: 87vh;
+}
+
+.ListItem {
+    width: '15%';
+    background-color: '#181c22';
+}
+
+.Title {
+    letter-spacing: 2px;
+}
+
+.YourIssues {
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex-direction: row;
-    background-color: #a7abb3;
+    height: 55%;
+    border: solid #2b303c;
+    border-width: 0.5px;
+    border-radius: 10px;
 }
 
-.SummarySection {
-    height: 90%;
-    width: 30%;
-    background-color: #181c22;
+.YourStatus {
+    width: 100%;
+    height: 25%;
+    border: solid #2b303c;
+    border-width: 0.5px;
+    border-radius: 10px;
 }
 
 
+#style-2::-webkit-scrollbar-track
+{
+	border-radius: 10px;
+	background-color: #181c22;
+}
 
-  
-  
+#style-2::-webkit-scrollbar
+{
+	width: 5px;
+	background-color: #181c22;
+}
+
+#style-2::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-color: #26303d;
+}
+
   
   

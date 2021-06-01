@@ -8,15 +8,17 @@ function Home() {
       <div className="HomeSection">
         <div className="Section">
           <img src={home} className="dev-home" alt="logo" style={{height: '80%', width: '30%'}}/>
-          <div>
+          <div style={{marginTop: '2%'}}>
             <div style={{fontSize: '30px'}}>
             Welcome, Giuliano. You have 
             </div>
+            <div className="Notifications">
+              0 new notifications
+            </div>
           </div>
           <div className="YourSummary">
-            <div style={{marginRight: '24%', fontSize: 24, marginBottom: '2%'}}>
-
-            Your summary
+            <div style={{marginRight: '18%', fontSize: 24, marginBottom: '2%'}}>
+              Your summary
             </div>
             <div className="SummaryInfo">
 

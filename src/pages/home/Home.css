@@ -60,24 +60,25 @@
 }
 
 .SummaryInfo {
-    width: 75%;
+    width: 85%;
     height: 80%;
     border-width: 1px;
-    border: solid #26303d;
-    border-width: 0 1px;
+    border: solid #2b303c;
+    border-width: 0.5px;
     border-radius: 10px;
     transition: 0.7s;
 }
 
 .SummaryInfo:hover {
     border: solid #5d6066;
-    border-width: 0 1px;
+    border-width: 0.5px;
+    border-radius: 10px;
     height: 85%;
 }
 
 .YourSummary {
     margin-top: -2.5%;
-    padding-left: 2%;
+    padding-left: 1%;
     width: 25%;
     transition: 0.6s;
 }
@@ -86,6 +87,15 @@
     color: #5d6066;
 }
 
+.Notifications{
+    height: '100%';
+    width: '100%';
+    transition: 0.7s;
+}
+
+.Notifications:hover {
+    color: '#5d6066'
+}
 
 
   

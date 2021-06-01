@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './Profile.css'
-import profile from '../../assets/profile.webp';
+import profile from '../../assets/profile.png';
 import SideMenu from '../../components/SideMenu/SideMenu.jsx'
 import { Tab, Row, Card, Accordion } from 'react-bootstrap'
 
@@ -13,7 +13,7 @@ const Profile = () => {
                     <div className="ProfileHeader">
                         <div className="ProfilePicture">
                             <div style={{width: '100%', height: '100%', borderRadius: '50%'}}>
-                                <img src={profile} className="profile-picture" alt="logo" width="90%"/>
+                                <img src={profile} className="profile-picture" alt="logo" width="80%" color="#000000" style={{marginTop: '7%'}}/>
                             </div>
                         </div>
                         <div className="ProfileName">
