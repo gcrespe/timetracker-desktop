@@ -1,6 +1,6 @@
 .LoginWrapper {
   text-align: center;
-  background-color: #26303d;
+  background-color: #dbe2ef;
   width: 100%;
   height: 100vh;
   display: flex;
@@ -52,7 +52,7 @@
 .ImageSection { 
   height: 100vh;
   width: 75%;
-  background-color: #181c22;
+  background-color: #f9f7f7;
   vertical-align: middle;
 }
 

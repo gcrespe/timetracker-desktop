@@ -1,6 +1,6 @@
 .Page {
     text-align: center;
-    background-color: #181c22;
+    background-color: #f9f7f7;
     width: 100%;
     height: 100vh;
     display: flex;
@@ -14,7 +14,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    color: #a7abb3;
+    color: #4d4f52;
 }
 
 .List {
@@ -49,7 +49,7 @@
 .YourIssues {
     width: 100%;
     height: 55%;
-    border: solid #2b303c;
+    border: solid #cccccc;
     border-width: 0.5px;
     border-radius: 10px;
 }
@@ -57,28 +57,29 @@
 .YourStatus {
     width: 100%;
     height: 25%;
-    border: solid #2b303c;
+    border: solid #cccccc;
     border-width: 0.5px;
     border-radius: 10px;
 }
 
 
+
 #style-2::-webkit-scrollbar-track
 {
 	border-radius: 10px;
-	background-color: #181c22;
+	background-color: #f9f7f7;
 }
 
 #style-2::-webkit-scrollbar
 {
 	width: 5px;
-	background-color: #181c22;
+	background-color: #f9f7f7;
 }
 
 #style-2::-webkit-scrollbar-thumb
 {
 	border-radius: 10px;
-	background-color: #26303d;
+	background-color: #dbe2ef;
 }
 
   

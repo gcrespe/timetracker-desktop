@@ -13,7 +13,7 @@ const Profile = () => {
                     <div className="ProfileHeader">
                         <div className="ProfilePicture">
                             <div style={{width: '100%', height: '100%', borderRadius: '50%'}}>
-                                <img src={profile} className="profile-picture" alt="logo" width="80%" color="#000000" style={{marginTop: '7%'}}/>
+                                <img src={profile} className="profile-picture" alt="logo" color="#ffffff" style={{marginTop: '15%'}}/>
                             </div>
                         </div>
                         <div className="ProfileName">
@@ -36,33 +36,33 @@ const Profile = () => {
                 
                 <div className="ProfileBody">
                     <Tab.Container id="left-tabs-example" defaultActiveKey="first">
-                        <Row style={{width: '100%', height: '80%', paddingTop: '5%', borderBottomWidth: '0.5px', borderColor: '#5d6066'}}>
+                        <Row style={{width: '100%', height: '80%', paddingTop: '5%'}}>
                             <Tab.Content style={{justifyContent: 'center', width: '100%', marginLeft: '3%'}}>
-                                <div style={{width: '100%', backgroundColor: '#222830', borderBottomLeftRadius: '10px', borderBottomRightRadius: '10px'}}>
+                                <div style={{width: '100%', backgroundColor: '#dbe2ef'}}>
                                     <Tab.Pane eventKey="first">
                                         <Accordion defaultActiveKey="0">
-                                            <Card  style={{backgroundColor: '#222830', borderBottomLeftRadius: '10px', borderBottomRightRadius: '10px'}}>
+                                            <Card  style={{backgroundColor: '#dbe2ef', borderColor: '#dbe2ef'}}>
                                                 <Accordion.Toggle as={Card.Header} eventKey="0">
                                                     Work Information
                                                 </Accordion.Toggle>
                                                 <Accordion.Collapse eventKey="0">
-                                                <Card.Body style={{backgroundColor: '#26303d', height: '38vh', borderBottomLeftRadius: '10px', borderBottomRightRadius: '10px'}}>Hello! I'm the body</Card.Body>
+                                                <Card.Body style={{backgroundColor: '#f9f7f7', height: '38vh', borderBottomLeftRadius: '10px', borderBottomRightRadius: '10px', border: 'none'}}>Hello! I'm the body</Card.Body>
                                                 </Accordion.Collapse>
                                             </Card>
-                                            <Card  style={{backgroundColor: '#222830'}}>
+                                            <Card  style={{backgroundColor: '#dbe2ef', borderColor: '#dbe2ef'}}>
                                                 <Accordion.Toggle as={Card.Header} eventKey="1">
                                                     Security
                                                 </Accordion.Toggle>
                                                 <Accordion.Collapse eventKey="1">
-                                                <Card.Body style={{backgroundColor: '#26303d', height: '38vh', borderBottomLeftRadius: '10px', borderBottomRightRadius: '10px'}}>Hello! I'm the body</Card.Body>
+                                                <Card.Body style={{backgroundColor: '#f9f7f7', height: '38vh', borderBottomLeftRadius: '10px', borderBottomRightRadius: '10px'}}>Hello! I'm the body</Card.Body>
                                                 </Accordion.Collapse>
                                             </Card>
-                                            <Card  style={{backgroundColor: '#222830'}}>
+                                            <Card  style={{backgroundColor: '#dbe2ef', borderColor: '#dbe2ef'}}>
                                                 <Accordion.Toggle as={Card.Header} eventKey="2">
                                                     Configurations
                                                 </Accordion.Toggle>
                                                 <Accordion.Collapse eventKey="2">
-                                                <Card.Body style={{backgroundColor: '#26303d', height: '38vh', borderBottomLeftRadius: '10px', borderBottomRightRadius: '10px'}}>Hello! I'm the body</Card.Body>
+                                                <Card.Body style={{backgroundColor: '#f9f7f7', height: '38vh', borderBottomLeftRadius: '10px', borderBottomRightRadius: '10px'}}>Hello! I'm the body</Card.Body>
                                                 </Accordion.Collapse>
                                             </Card>
                                         </Accordion>

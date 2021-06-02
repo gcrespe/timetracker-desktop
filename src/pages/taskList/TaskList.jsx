@@ -1,7 +1,10 @@
+import {useState} from 'react'
 import './TaskList.css'
-import { Table, Button, ListGroup } from 'react-bootstrap'
+import { Button, ListGroup } from 'react-bootstrap'
 
 const TaskList = () => {
+
+    const [, updateState] = useState();
 
     const taskList = [
         {
@@ -11,7 +14,7 @@ const TaskList = () => {
             dueDate: '05/06/05',
             remainingTime: '7 days',
             creator: 'Jeff Kanashiro',
-            assignee: '',
+            assignee: 'Giuliano',
             priority: 'High',
             project: 'Project X',
             sprint: 'Sprint 1'
@@ -227,46 +230,82 @@ const TaskList = () => {
         }
     ]
 
+    const activities = [
+        {
+            task: 1,
+            activity: 'Page',
+            duration: '00:35:12',
+            status: 'ongoing'
+        },
+        {
+            task: 2,
+            activity: 'Page',
+            duration: '00:35:12',
+            status: 'ongoing'
+        }
+    ]
+
+    const [activity, setActivity] = useState(activities);
+
+    const pickTask = (task) => {
+
+        const activity = {
+            task: task.number,
+            activity: 'Description',
+            duration: '00:00:00',
+            status: 'ongoing'
+        }
+
+        const auxActivities = activities;
+
+        auxActivities.push(activity)
+        setActivity(auxActivities)
+        updateState({})
+        setActivity(auxActivities)
+        updateState({})
+    }
+
     return (
         <div className="Page">
             <div className="HomeSectionTaskList">
                 <div className="List">
-                    <ListGroup variant="flush" horizontal style={{width: '100%', backgroundColor: '#000000', fontSize: '12px', height: '6vh'}}>
-                        <ListGroup.Item style={{width: '15%', borderWidth: '1px', borderColor: '#26303d', backgroundColor: '#181c22'}}>Number</ListGroup.Item>
-                        <ListGroup.Item style={{width: '28%', borderWidth: '1px', borderColor: '#26303d', backgroundColor: '#181c22'}}>Title</ListGroup.Item>
-                        <ListGroup.Item style={{width: '22%', borderWidth: '1px', borderColor: '#26303d', backgroundColor: '#181c22'}}>Due date</ListGroup.Item>
-                        <ListGroup.Item style={{width: '17%', borderWidth: '1px', borderColor: '#26303d', backgroundColor: '#181c22'}}>Project</ListGroup.Item>
-                        <ListGroup.Item style={{width: '13%', borderWidth: '1px', borderColor: '#26303d', backgroundColor: '#181c22'}}>Sprint</ListGroup.Item>
-                        <ListGroup.Item style={{width: '17%', borderWidth: '1px', borderColor: '#26303d', backgroundColor: '#181c22'}}>Assignee</ListGroup.Item>
+                    <ListGroup horizontal style={{width: '100%', backgroundColor: '#000000', fontSize: '12px', height: '6vh'}}>
+                        <ListGroup.Item style={{width: '15%', borderWidth: '1px', borderColor: '#dbe2ef', backgroundColor: '#f9f7f7'}}>Number</ListGroup.Item>
+                        <ListGroup.Item style={{width: '28%', borderWidth: '1px', borderColor: '#dbe2ef', backgroundColor: '#f9f7f7'}}>Title</ListGroup.Item>
+                        <ListGroup.Item style={{width: '22%', borderWidth: '1px', borderColor: '#dbe2ef', backgroundColor: '#f9f7f7'}}>Due date</ListGroup.Item>
+                        <ListGroup.Item style={{width: '17%', borderWidth: '1px', borderColor: '#dbe2ef', backgroundColor: '#f9f7f7'}}>Project</ListGroup.Item>
+                        <ListGroup.Item style={{width: '13%', borderWidth: '1px', borderColor: '#dbe2ef', backgroundColor: '#f9f7f7'}}>Sprint</ListGroup.Item>
+                        <ListGroup.Item style={{width: '17%', borderWidth: '1px', borderColor: '#dbe2ef', backgroundColor: '#f9f7f7'}}>Assignee</ListGroup.Item>
                     </ListGroup>
                     <div className="ListItems" id="style-2">
                         { taskList.map( (task) => {
                             return (
-                                <ListGroup variant="flush" horizontal style={{width: '100%', color: '#cccccc', fontSize: '12px', height: '10vh', justifyContent: 'center', alignContent: 'center'}}>
-                                    <ListGroup.Item style={{width: '15%', backgroundColor: '#181c22', marginTop: '3%'}}>{task.number}</ListGroup.Item>
-                                    <ListGroup.Item style={{width: '30%', backgroundColor: '#181c22', marginTop: '3%'}}>{task.title}</ListGroup.Item>
-                                    <ListGroup.Item style={{width: '20%', backgroundColor: '#181c22', marginTop: '3%'}}>{task.dueDate}</ListGroup.Item>
-                                    <ListGroup.Item style={{width: '15%', backgroundColor: '#181c22', marginTop: '3%'}}>{task.project}</ListGroup.Item>
-                                    <ListGroup.Item style={{width: '15%', backgroundColor: '#181c22', marginTop: '3%'}}>{task.sprint}</ListGroup.Item>
-                                    <ListGroup.Item style={{width: '15%', backgroundColor: '#181c22', marginTop: '3%'}}>
+                                <ListGroup className="ListGroup" horizontal style={{width: '100%', color: '#cccccc', fontSize: '12px', justifyContent: 'center', alignContent: 'center', height: '10vh', paddingTop: '3px'}}>
+                                    <ListGroup.Item style={{width: '15%', backgroundColor: '#f9f7f7', paddingTop: '20px', border: 'none', color: '#aaaaaa'}}>{task.number}</ListGroup.Item>
+                                    <ListGroup.Item style={{width: '28%', backgroundColor: '#f9f7f7', paddingTop: '20px', border: 'none', color: '#aaaaaa'}}>{task.title}</ListGroup.Item>
+                                    <ListGroup.Item style={{width: '22%', backgroundColor: '#f9f7f7', paddingTop: '20px', border: 'none', color: '#aaaaaa'}}>{task.dueDate}</ListGroup.Item>
+                                    <ListGroup.Item style={{width: '17%', backgroundColor: '#f9f7f7', paddingTop: '20px', border: 'none', color: '#aaaaaa'}}>{task.project}</ListGroup.Item>
+                                    <ListGroup.Item style={{width: '13%', backgroundColor: '#f9f7f7', paddingTop: '20px', border: 'none', color: '#aaaaaa'}}>{task.sprint}</ListGroup.Item>
+                                    <ListGroup.Item style={{width: '17%', backgroundColor: '#f9f7f7', paddingTop: '20px', border: 'none', color: '#aaaaaa'}}>
                                         {task.assignee ? task.assignee : 
                                             <>
                                             <style type="text/css">
                                               {`
-                                              .btn-outline-secondary {
-                                                border-color: #26303d;
-                                                color: #26303d;
+                                              .btn-outline-primary {
+                                                border-color: #dbe2ef;
+                                                color: #000000;
                                               }
-                                              .btn-outline-secondary:hover {
-                                                background-color: #26303d;
-                                                color: #ffffff;
-                                                border-color: #26303d;
+                                              .btn-outline-primary:hover {
+                                                background-color: #dbe2ef;
+                                                color: #000000;
+                                                border-color: #dbe2ef;
                                               }
                                               `}
                                             </style>
                                             <Button 
-                                                variant="outline-secondary"
-                                                style={{fontSize: '10px', height: '5vh', marginTop: '-10px', width: '80%'}}>
+                                                variant="outline-primary"
+                                                style={{fontSize: '10px', height: '5vh', marginTop: '-10px', width: '80%'}}
+                                                onClick={() => pickTask(task)}>
                                               Pick
                                             </Button>
                                           </>
@@ -282,42 +321,65 @@ const TaskList = () => {
                         Your activities
                     </div>
                     <div className="YourIssues">
-                        <ListGroup variant="flush" horizontal style={{width: '100%', fontSize: '9px'}}>
-                            <ListGroup.Item style={{width: '10%', backgroundColor: '#181c22'}}>Task</ListGroup.Item>
-                            <ListGroup.Item style={{width: '30%', backgroundColor: '#181c22'}}>Activity</ListGroup.Item>
-                            <ListGroup.Item style={{width: '25%', backgroundColor: '#181c22'}}>Duration</ListGroup.Item>
-                            <ListGroup.Item style={{width: '25%', backgroundColor: '#181c22'}}>Status</ListGroup.Item>
+                        <ListGroup horizontal style={{width: '100%', fontSize: '9px'}}>
+                            <ListGroup.Item style={{width: '25%', backgroundColor: '#f9f7f7', border: 'none'}}>Task</ListGroup.Item>
+                            <ListGroup.Item style={{width: '25%', backgroundColor: '#f9f7f7', border: 'none'}}>Activity</ListGroup.Item>
+                            <ListGroup.Item style={{width: '25%', backgroundColor: '#f9f7f7', border: 'none'}}>Duration</ListGroup.Item>
+                            <ListGroup.Item style={{width: '25%', backgroundColor: '#f9f7f7', border: 'none'}}>Status</ListGroup.Item>
                         </ListGroup>
                         <div style={{overflowY: 'scroll', overflowX: 'hidden', height: '88%'}} id="style-2">
-                            { taskList.map( (task) => {
+                            { activity.map( (activity) => {
                                 return (
-                                    <ListGroup variant="flush" horizontal style={{width: '100%', color: '#cccccc', fontSize: '12px', height: '8vh', justifyContent: 'center', alignContent: 'center'}}>
-                                        <ListGroup.Item style={{width: '20%', backgroundColor: '#181c22', marginTop: '3%'}}>lalala</ListGroup.Item>
-                                        <ListGroup.Item style={{width: '30%', backgroundColor: '#181c22', marginTop: '3%'}}>lalala</ListGroup.Item>
-                                        <ListGroup.Item style={{width: '20%', backgroundColor: '#181c22', marginTop: '3%'}}>lalala</ListGroup.Item>
-                                        <ListGroup.Item style={{width: '35%', backgroundColor: '#181c22', marginTop: '3%'}}>
-                                            {task.assignee ? task.assignee : 
+                                    <ListGroup horizontal style={{width: '100%', color: '#cccccc', fontSize: '12px', height: '8vh', justifyContent: 'center', alignContent: 'center'}}>
+                                        <ListGroup.Item style={{width: '20%', backgroundColor: '#f9f7f7', marginTop: '3%', border: 'none', color: '#aaaaaa'}}>{activity.task}</ListGroup.Item>
+                                        <ListGroup.Item style={{width: '25%', backgroundColor: '#f9f7f7', marginTop: '3%', border: 'none', color: '#aaaaaa'}}>{activity.activity}</ListGroup.Item>
+                                        <ListGroup.Item style={{width: '25%', backgroundColor: '#f9f7f7', marginTop: '3%', border: 'none', color: '#aaaaaa'}}>{activity.duration}</ListGroup.Item>
+                                        <ListGroup.Item style={{width: '25%', backgroundColor: '#f9f7f7', marginTop: '3%', border: 'none', color: '#aaaaaa'}}>
+                                            {activity.status == 'ongoing' ? 
                                                 <>
-                                                <style type="text/css">
-                                                {`
-                                                .btn-outline-secondary {
-                                                    border-color: #26303d;
-                                                    color: #26303d;
-                                                }
-                                                .btn-outline-secondary:hover {
-                                                    background-color: #26303d;
-                                                    color: #ffffff;
-                                                    border-color: #26303d;
-                                                }
-                                                `}
-                                                </style>
-                                                <Button 
-                                                    variant="outline-secondary"
-                                                    style={{fontSize: '10px', height: '5vh', marginTop: '-10px', width: '10vh'}}>
-                                                Pick
-                                                </Button>
-                                            </>
-                                            }
+                                                    <style type="text/css">
+                                                    {`
+                                                    .btn-outline-primary {
+                                                        border-color: #dbe2ef;
+                                                        color: #000000;
+                                                    }
+                                                    .btn-outline-primary:hover {
+                                                        background-color: #dbe2ef;
+                                                        color: #000000;
+                                                        border-color: #dbe2ef;
+                                                    }
+                                                    `}
+                                                    </style>
+                                                    <Button 
+                                                        variant="outline-primary"
+                                                        type="warning"  
+                                                        style={{fontSize: '10px', height: '5vh', marginTop: '-10px', width: '8vh'}}>
+                                                    Pause
+                                                    </Button>
+                                                </>
+                                            : activity.status = 'paused' ? 
+                                                <>
+                                                    <style type="text/css">
+                                                    {`
+                                                    .btn-outline-primary {
+                                                        border-color: #dbe2ef;
+                                                        color: #dbe2ef;
+                                                    }
+                                                    .btn-outline-primary:hover {
+                                                        background-color: #dbe2ef;
+                                                        color: #ffffff;
+                                                        border-color: #dbe2ef;
+                                                    }
+                                                    `}
+                                                    </style>
+                                                    <Button 
+                                                        variant="outline-primary"
+                                                        type="warning"
+                                                        style={{fontSize: '10px', height: '5vh', marginTop: '-10px', width: '10vh'}}>
+                                                    Continue
+                                                    </Button>
+                                                </>
+                                            : null }
                                         </ListGroup.Item>
                                     </ListGroup>
                                 )
@@ -328,26 +390,26 @@ const TaskList = () => {
                         Your status
                     </div>
                     <div className="YourStatus">
-                        <ListGroup variant="flush" horizontal style={{width: '100%', fontSize: '9px'}}>
-                            <ListGroup.Item style={{width: '33%', backgroundColor: '#181c22'}}>Project</ListGroup.Item>
-                            <ListGroup.Item style={{width: '33%', backgroundColor: '#181c22'}}>Issues</ListGroup.Item>
-                            <ListGroup.Item style={{width: '33%', backgroundColor: '#181c22'}}>Hours</ListGroup.Item>
+                        <ListGroup horizontal style={{width: '100%', fontSize: '9px'}}>
+                            <ListGroup.Item style={{width: '33%', backgroundColor: '#f9f7f7', border: 'none'}}>Project</ListGroup.Item>
+                            <ListGroup.Item style={{width: '33%', backgroundColor: '#f9f7f7', border: 'none'}}>Issues</ListGroup.Item>
+                            <ListGroup.Item style={{width: '33%', backgroundColor: '#f9f7f7', border: 'none'}}>Hours</ListGroup.Item>
                         </ListGroup>
                         <div style={{overflowY: 'scroll', overflowX: 'hidden', height: '73%'}} id="style-2">
-                            <ListGroup variant="flush" horizontal style={{width: '100%', color: '#cccccc', fontSize: '12px', height: '7vh', justifyContent: 'center', alignContent: 'center'}}>
-                                        <ListGroup.Item style={{width: '33%', backgroundColor: '#181c22', marginTop: '3%'}}>asdasd</ListGroup.Item>
-                                        <ListGroup.Item style={{width: '33%', backgroundColor: '#181c22', marginTop: '3%'}}>asdasd</ListGroup.Item>
-                                        <ListGroup.Item style={{width: '33%', backgroundColor: '#181c22', marginTop: '3%'}}>asdasd</ListGroup.Item>
+                            <ListGroup horizontal style={{width: '100%', color: '#cccccc', fontSize: '12px', height: '7vh', justifyContent: 'center', alignContent: 'center'}}>
+                                        <ListGroup.Item style={{width: '33%', backgroundColor: '#f9f7f7', marginTop: '3%', border: 'none', color: '#aaaaaa'}}>asdasd</ListGroup.Item>
+                                        <ListGroup.Item style={{width: '33%', backgroundColor: '#f9f7f7', marginTop: '3%', border: 'none', color: '#aaaaaa'}}>asdasd</ListGroup.Item>
+                                        <ListGroup.Item style={{width: '33%', backgroundColor: '#f9f7f7', marginTop: '3%', border: 'none', color: '#aaaaaa'}}>asdasd</ListGroup.Item>
                             </ ListGroup>
-                            <ListGroup variant="flush" horizontal style={{width: '100%', color: '#cccccc', fontSize: '12px', height: '7vh', justifyContent: 'center', alignContent: 'center'}}>
-                                        <ListGroup.Item style={{width: '33%', backgroundColor: '#181c22', marginTop: '3%'}}>asdasd</ListGroup.Item>
-                                        <ListGroup.Item style={{width: '33%', backgroundColor: '#181c22', marginTop: '3%'}}>asdasd</ListGroup.Item>
-                                        <ListGroup.Item style={{width: '33%', backgroundColor: '#181c22', marginTop: '3%'}}>asdasd</ListGroup.Item>
+                            <ListGroup horizontal style={{width: '100%', color: '#cccccc', fontSize: '12px', height: '7vh', justifyContent: 'center', alignContent: 'center'}}>
+                                        <ListGroup.Item style={{width: '33%', backgroundColor: '#f9f7f7', marginTop: '3%', border: 'none', color: '#aaaaaa'}}>asdasd</ListGroup.Item>
+                                        <ListGroup.Item style={{width: '33%', backgroundColor: '#f9f7f7', marginTop: '3%', border: 'none', color: '#aaaaaa'}}>asdasd</ListGroup.Item>
+                                        <ListGroup.Item style={{width: '33%', backgroundColor: '#f9f7f7', marginTop: '3%', border: 'none', color: '#aaaaaa'}}>asdasd</ListGroup.Item>
                             </ ListGroup>
-                            <ListGroup variant="flush" horizontal style={{width: '100%', color: '#cccccc', fontSize: '12px', height: '7vh', justifyContent: 'center', alignContent: 'center'}}>
-                                        <ListGroup.Item style={{width: '33%', backgroundColor: '#181c22', marginTop: '3%'}}>asdasd</ListGroup.Item>
-                                        <ListGroup.Item style={{width: '33%', backgroundColor: '#181c22', marginTop: '3%'}}>asdasd</ListGroup.Item>
-                                        <ListGroup.Item style={{width: '33%', backgroundColor: '#181c22', marginTop: '3%'}}>asdasd</ListGroup.Item>
+                            <ListGroup horizontal style={{width: '100%', color: '#cccccc', fontSize: '12px', height: '7vh', justifyContent: 'center', alignContent: 'center'}}>
+                                        <ListGroup.Item style={{width: '33%', backgroundColor: '#f9f7f7', marginTop: '3%', border: 'none', color: '#aaaaaa'}}>asdasd</ListGroup.Item>
+                                        <ListGroup.Item style={{width: '33%', backgroundColor: '#f9f7f7', marginTop: '3%', border: 'none', color: '#aaaaaa'}}>asdasd</ListGroup.Item>
+                                        <ListGroup.Item style={{width: '33%', backgroundColor: '#f9f7f7', marginTop: '3%', border: 'none', color: '#aaaaaa'}}>asdasd</ListGroup.Item>
                             </ ListGroup>
                         </div>
                     </div>

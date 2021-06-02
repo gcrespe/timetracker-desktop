@@ -1,20 +1,35 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import logo from './assets/logo.svg';
 import dev from './assets/code_login.svg'
 import './App.css';
 import { Link, useHistory } from 'react-router-dom'
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form , Alert, Spinner} from 'react-bootstrap';
 
 function App() {
 
   const history = useHistory();
-  const [loginTry, setLoginTry] = useState(false);
+  const [logged, setLogged] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  function simulateNetworkRequest() {
+    return new Promise((resolve) => setTimeout(resolve, 2000));
+  }
+  
+  const [isLoading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (isLoading) {
+      simulateNetworkRequest().then(() => {
+        setLoading(false);
+        history.push("/home");
+      });
+    }
+  }, [isLoading]);
+
   const handleLoginClick = () => {
-    setLoginTry(!loginTry);
-    history.push("/home");
+    setLogged(true);
+    if(!isLoading) setLoading(true)
   }
 
   return (
@@ -39,20 +54,23 @@ function App() {
             <style type="text/css">
               {`
               .btn-outline-secondary {
-                border-color: #181c22;
-                color: #181c22;
+                border-color: #112d4e;
+                color: #112d4e;
               }
               .btn-outline-secondary:hover {
-                background-color: #181c22;
+                background-color: #112d4e;
                 color: #ffffff;
-                border-color: #181c22;
+                border-color: #112d4e;
               }
               `}
             </style>
-            <Button style={{width: '100%' }}
+            <Button style={{width: '100%'}}
               variant="outline-secondary"
+              disabled={isLoading}
+              active={isLoading}
               onClick={() => handleLoginClick(true) }>
-              Login
+              {isLoading ? 
+                <Spinner animation="border" size="sm" style={{marginBottom: '2px'}}/> : 'Login'}
             </Button>
           </>
         </div>
