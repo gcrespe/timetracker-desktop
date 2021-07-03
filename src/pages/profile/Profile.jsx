@@ -13,7 +13,7 @@ const Profile = () => {
                     <div className="ProfileHeader">
                         <div className="ProfilePicture">
                             <div style={{width: '100%', height: '100%', borderRadius: '50%'}}>
-                                <img src={profile} className="profile-picture" alt="logo" color="#ffffff" style={{marginTop: '15%'}}/>
+                                <img src={profile} className="profile-picture" alt="logo" style={{marginTop: '15%'}}/>
                             </div>
                         </div>
                         <div className="ProfileName">
@@ -46,7 +46,23 @@ const Profile = () => {
                                                     Work Information
                                                 </Accordion.Toggle>
                                                 <Accordion.Collapse eventKey="0">
-                                                <Card.Body style={{backgroundColor: '#f9f7f7', height: '38vh', borderBottomLeftRadius: '10px', borderBottomRightRadius: '10px', border: 'none'}}>Hello! I'm the body</Card.Body>
+                                                <Card.Body style={{backgroundColor: '#f9f7f7', height: '38vh', borderBottomLeftRadius: '10px', borderBottomRightRadius: '10px', border: 'none', textAlign: 'left', justifyContent: 'space-around'}}>
+                                                    <div style={{height: '20%'}}>
+                                                        Contribuitor name: 
+                                                    </div>
+                                                    <div style={{height: '20%'}}>
+                                                        Principal project: 
+                                                    </div>
+                                                    <div style={{height: '20%'}}>
+                                                        Total work time:
+                                                    </div>
+                                                    <div style={{height: '20%'}}>
+                                                        Last issue done: 
+                                                    </div>
+                                                    <div style={{height: '20%'}}>
+                                                        Last login: 
+                                                    </div>
+                                                </Card.Body>
                                                 </Accordion.Collapse>
                                             </Card>
                                             <Card  style={{backgroundColor: '#dbe2ef', borderColor: '#dbe2ef'}}>
@@ -54,7 +70,17 @@ const Profile = () => {
                                                     Security
                                                 </Accordion.Toggle>
                                                 <Accordion.Collapse eventKey="1">
-                                                <Card.Body style={{backgroundColor: '#f9f7f7', height: '38vh', borderBottomLeftRadius: '10px', borderBottomRightRadius: '10px'}}>Hello! I'm the body</Card.Body>
+                                                <Card.Body style={{backgroundColor: '#f9f7f7', height: '38vh', borderBottomLeftRadius: '10px', borderBottomRightRadius: '10px', border: 'none', textAlign: 'left', justifyContent: 'space-around'}}>
+                                                    <div style={{height: '20%'}}>
+                                                        Username: 
+                                                    </div>
+                                                    <div style={{height: '20%'}}>
+                                                        Password: 
+                                                    </div>
+                                                    <div style={{height: '20%'}}>
+                                                        Email:
+                                                    </div>
+                                                </Card.Body>
                                                 </Accordion.Collapse>
                                             </Card>
                                             <Card  style={{backgroundColor: '#dbe2ef', borderColor: '#dbe2ef'}}>
@@ -62,7 +88,8 @@ const Profile = () => {
                                                     Configurations
                                                 </Accordion.Toggle>
                                                 <Accordion.Collapse eventKey="2">
-                                                <Card.Body style={{backgroundColor: '#f9f7f7', height: '38vh', borderBottomLeftRadius: '10px', borderBottomRightRadius: '10px'}}>Hello! I'm the body</Card.Body>
+                                                <Card.Body style={{backgroundColor: '#f9f7f7', height: '38vh', borderBottomLeftRadius: '10px', borderBottomRightRadius: '10px', border: 'none', textAlign: 'left', justifyContent: 'space-around'}}>
+                                                </Card.Body>
                                                 </Accordion.Collapse>
                                             </Card>
                                         </Accordion>

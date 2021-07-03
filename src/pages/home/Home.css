@@ -57,9 +57,15 @@
 
 .SummaryInfo {
     width: 85%;
-    height: 80%;
+    height: 85%;
     border-width: 1px;
     border: solid #bdc0c7;
+    color: #c2c1c1;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding-left: 5%;
+    justify-content: space-around;
     border-width: 0.5px;
     border-radius: 10px;
     transition: 0.7s;
@@ -67,9 +73,10 @@
 
 .SummaryInfo:hover {
     border: solid #5d6066;
+    color: #5d6066;
     border-width: 0.5px;
     border-radius: 10px;
-    height: 85%;
+    height: 90%;
 }
 
 .YourSummary {

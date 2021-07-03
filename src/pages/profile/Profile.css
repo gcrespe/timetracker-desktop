@@ -14,7 +14,6 @@
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    color: #6d727e;
 }
 
 .ProfileHeaderWrapper {
@@ -55,12 +54,12 @@
 .ProfileText {
   font-size: 16px;
   height: 5vh;
-  color: #2e3443;
+  color: #a9a9a9;
   transition: 0.7s;
 }
 
 .ProfileText:hover {
-  color: #656a79;
+  color: #454750;
 } 
 
 .Tab {
