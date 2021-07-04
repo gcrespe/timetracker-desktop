@@ -1,0 +1,107 @@
+.Page {
+    text-align: center;
+    background-color: #f9f7f7;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+  }
+
+.HomeSection { 
+    height: 100vh;
+    width: 100%;
+
+}
+
+.Section {
+    padding-top: 5%;
+    height: 35vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: #262c37;
+    font-size: 30px;
+}
+
+.DownSection {
+    padding-right: -2%;
+    height: 60vh;
+    width: 100%;
+}
+
+.TitleLowerSection {
+    font-size: 30px;
+    height: 7vh;
+    padding-bottom: 2%;
+    letter-spacing: 3px
+}
+
+.Daily{
+    height: 55vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+.SummarySection {
+    height: 90%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.SummaryInfo {
+    width: 85%;
+    height: 85%;
+    border-width: 1px;
+    border: solid #bdc0c7;
+    color: #c2c1c1;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding-left: 5%;
+    justify-content: space-around;
+    border-width: 0.5px;
+    border-radius: 10px;
+    transition: 0.7s;
+}
+
+.SummaryInfo:hover {
+    border: solid #5d6066;
+    color: #5d6066;
+    border-width: 0.5px;
+    border-radius: 10px;
+    height: 90%;
+}
+
+.YourSummary {
+    margin-top: -2.5%;
+    padding-left: 1%;
+    width: 25%;
+    transition: 0.6s;
+}
+
+.YourSummary:hover {
+    color: #5d6066;
+}
+
+.Notifications{
+    height: '100%';
+    width: '100%';
+    transition: 0.7s;
+}
+
+.Notifications:hover {
+    color: '#5d6066'
+}
+
+
+  
+  
+  
+  

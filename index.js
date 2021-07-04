@@ -1,13 +1,15 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow } = require("electron")
+
 
 function createWindow(){
-    const win = new BrowserWindow({
+
+    const window = new BrowserWindow({ 
         width: 1200,
         height: 700,
         frame: false
-    })
+    });
 
-    win.loadURL("http://localhost:3000");
+    window.loadURL("http://localhost:3000");
 }
 
-app.on("ready", createWindow); 
+app.on("ready", createWindow);

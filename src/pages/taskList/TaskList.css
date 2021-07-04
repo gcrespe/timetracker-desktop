@@ -1,0 +1,86 @@
+.Page {
+    text-align: center;
+    background-color: #f9f7f7;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+  }
+
+.HomeSectionTaskList { 
+    height: 100vh;
+    width: 96%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: #4d4f52;
+}
+
+.List {
+    width: 68%;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.Resume {
+    width: 28%;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.ListItems {
+    overflow-y: scroll;
+    height: 87vh;
+}
+
+.ListItem {
+    width: '15%';
+    background-color: '#181c22';
+}
+
+.Title {
+    letter-spacing: 2px;
+}
+
+.YourIssues {
+    width: 100%;
+    height: 55%;
+    border: solid #cccccc;
+    border-width: 0.5px;
+    border-radius: 10px;
+}
+
+.YourStatus {
+    width: 100%;
+    height: 25%;
+    border: solid #cccccc;
+    border-width: 0.5px;
+    border-radius: 10px;
+}
+
+
+
+#style-2::-webkit-scrollbar-track
+{
+	border-radius: 10px;
+	background-color: #f9f7f7;
+}
+
+#style-2::-webkit-scrollbar
+{
+	width: 5px;
+	background-color: #f9f7f7;
+}
+
+#style-2::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-color: #dbe2ef;
+}
+
+  
+  
