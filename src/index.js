@@ -10,20 +10,24 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Switch, Route } from 'react-router-dom' 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SideMenu from './components/SideMenu/SideMenu.jsx'
- 
+import { Provider } from 'mobx-react';
+import { Stores } from './stores';
+
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-        <Switch>
-          <Route path="/" exact={true} component={App} />
-          <SideMenu>
-            <Route path="/home" component={Home} />
-            <Route path="/profile" component={Profile} />
-            <Route path="/calendar" component={Calendar} />
-            <Route path="/taskList" component={TaskList} />
-          </SideMenu>
-      </Switch>
-    </BrowserRouter>
+    <Provider {...Stores}>
+      <BrowserRouter>
+          <Switch>
+            <Route path="/" exact={true} component={App} />
+            <SideMenu>
+              <Route path="/home" component={Home} />
+              <Route path="/profile" component={Profile} />
+              <Route path="/calendar" component={Calendar} />
+              <Route path="/taskList" component={TaskList} />
+            </SideMenu>
+        </Switch>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

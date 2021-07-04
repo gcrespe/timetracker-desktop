@@ -2,8 +2,12 @@ import './Home.css'
 import home from '../../assets/home.svg'
 import SideMenu from '../../components/SideMenu/SideMenu.jsx'
 import {Button} from 'react-bootstrap'
-function Home() {
+import { inject, observer } from 'mobx-react'
+
+const Home = inject('store')(observer((props) => {
   
+  const { store } = props;
+
   return (
       <div className="HomeSection">
         <div className="Section">
@@ -18,7 +22,7 @@ function Home() {
           </div>
           <div className="YourSummary">
             <div style={{marginRight: '18%', fontSize: 24, marginBottom: '2%'}}>
-              Your summary
+              {store.pets[0]}
             </div>
             <div className="SummaryInfo">
 
@@ -154,6 +158,6 @@ function Home() {
         </div>
       </div>
   );
-}
+}));
 
 export default Home;
