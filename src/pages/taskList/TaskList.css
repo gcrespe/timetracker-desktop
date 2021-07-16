@@ -46,23 +46,26 @@
     letter-spacing: 2px;
 }
 
-.YourIssues {
+.IssueDescription {
     width: 100%;
-    height: 55%;
+    height: 75%;
     border: solid #cccccc;
     border-width: 0.5px;
     border-radius: 10px;
 }
 
-.YourStatus {
+.ControlButtons {
     width: 100%;
-    height: 25%;
-    border: solid #cccccc;
-    border-width: 0.5px;
-    border-radius: 10px;
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
-
+.ControlButton {
+    width: 40%;
+    height: 100%;
+}
 
 #style-2::-webkit-scrollbar-track
 {

@@ -71,22 +71,44 @@
     transition: 0.7s;
 }
 
+.Divider {
+    width: 95%;
+    height: 70%;
+    display: flex;
+    flex-direction: row;
+}
+
+.Text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+
+.Text2 {
+    padding-left: 47%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: right;
+}
+
 .SummaryInfo:hover {
     border: solid #5d6066;
     color: #5d6066;
     border-width: 0.5px;
     border-radius: 10px;
-    height: 90%;
 }
 
-.YourSummary {
+.YourResume {
     margin-top: -2.5%;
     padding-left: 1%;
     width: 25%;
+    height: 140%;
     transition: 0.6s;
 }
 
-.YourSummary:hover {
+.YourResume:hover {
     color: #5d6066;
 }
 

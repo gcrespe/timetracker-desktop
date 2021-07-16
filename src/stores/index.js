@@ -1,7 +1,7 @@
-import PetOwnerStore from './Store'
+import TaskListStore from './TaskListStore'
 import LoginStore from './Login'
 
 export const Stores = {
-    store: new PetOwnerStore(),
+    taskList: new TaskListStore(),
     login: new LoginStore()
 }

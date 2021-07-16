@@ -37,8 +37,6 @@ const App = inject('login')(observer((props) => {
       if(isLoading) setLoading(false)
     
     }
-    
-
 
   }
 
