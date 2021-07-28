@@ -1,7 +1,8 @@
 import './Home.css'
 import home from '../../assets/home.svg'
-import SideMenu from '../../components/SideMenu/SideMenu.jsx'
-import {Button} from 'react-bootstrap'
+import Card from 'react-bootstrap/Card'
+import { Button, ListGroup, ListGroupItem } from 'react-bootstrap'
+import ButtonCustom from '../../components/ButtonCustom/ButtonCustom'
 import { inject, observer } from 'mobx-react'
 
 const Home = inject('login')(observer((props) => {
@@ -30,72 +31,26 @@ const Home = inject('login')(observer((props) => {
           </div>
         </div>
         <div className="DownSection">
-          <div className="TitleLowerSection">
-            Daily summary
-          </div>
           <div className="Daily">
             { login.projectsInfo.map( project => {
               return (
-                <div className="SummarySection">
-                  {project.name}
-                  <div className="SummaryInfo">
-                    <div className="Divider">
-                      <div className="Text">
-                        <div>
-                          Total issues done
-                        </div>
-                        <div>
-                          Total time spent
-                        </div>
-                        <div>
-                          Remaining issues
-                        </div>
-                        <div>
-                          Remaining time
-                        </div>
-                        <div>
-                          Release date
-                        </div>
-                      </div>
-                      <div className="Text2">
-                        <div>
-                          {project.issuesDone} issues
-                        </div>
-                        <div>
-                          {project.timeSpent} hours
-                        </div>
-                        <div>
-                          {project.remainingIssues} issues
-                        </div>
-                        <div>
-                          {project.remainingTime} hours
-                        </div>
-                        <div>
-                          {project.releaseDate}
-                        </div>
-                      </div>
-                    </div>
-                      <>
-                        <style type="text/css">
-                          {`
-                          .btn-outline-secondary {
-                            border-color: #112d4e;
-                            color: #112d4e;
-                          }
-                          .btn-outline-secondary:hover {
-                            background-color: #112d4e;
-                            color: #ffffff;
-                            border-color: #112d4e;
-                          }
-                          `}
-                        </style>
-                        <Button style={{width: '60%', height: '10%', marginLeft: '17%'}} variant="outline-secondary">
-                          <div style={{marginTop: "-5px"}}>
-                            Details
-                          </div>
-                        </Button>
-                      </>
-                  </div>
+                <div style={{marginLeft: '1%', marginRight: '1%'}}>
+                  <Card style={{ width: '20rem' , border: 'none' }} className="text-left">
+                    <Card.Body>
+                      <Card.Title>{project.name}</Card.Title>
+                      <Card.Text>
+                        {project.description}
+                      </Card.Text>
+                    </Card.Body>
+                    <ListGroup className="list-group-flush">
+                      <ListGroupItem>Total issues done: {project.issuesDone}</ListGroupItem>
+                      <ListGroupItem>Total time spent: {project.timeSpent}</ListGroupItem>
+                      <ListGroupItem>Release date: {project.releaseDate}</ListGroupItem>
+                    </ListGroup>
+                    <Card.Body>
+                      <ButtonCustom text={"Details"}/>
+                    </Card.Body>
+                  </Card>
                 </div>
               )
             })}

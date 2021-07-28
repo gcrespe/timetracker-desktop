@@ -3,11 +3,32 @@ import axios from 'axios'
 
 export default class TaskListStore {
 
+    // [
+    //     '{{repeat(5,7)}}',
+    //     {
+            
+    //         number: '{{objectId()}}',
+    //         title: function (tags) {
+    //         return 'TT' + tags.integer(50, 120) + ' - You have ' + tags.integer(1, 10) + ' unread messages.';
+    //         },
+    //         description: '{{lorem(1, "paragraphs")}}',
+    //         dueDate: '{{date()}}',
+    //         remainingTime: '7 days',
+    //         creator: '{{firstName()}} {{surname()}}',
+    //         assignee: '{{firstName()}}',
+    //         priority: '{{integer(1, 5)}}',
+    //         project: ' Project ' + '{{company().toUpperCase()}}',
+    //         sprint: 'Sprint ' + '{{integer(4, 12)}}'
+        
+    //     }
+    // ]
+    
+
     taskList = [
         {
             number: 1,
             title: 'TT64 - Criar tela de perfil',
-            description: 'Tela que deve exibir as informações pessoais',
+            description: 'Tela que deve exibir as informações pessoais. Deve ter uma seção para foto, uma para informações de segurança, uma para configuração da própria aplicação',
             dueDate: '05/06/05',
             remainingTime: '7 days',
             creator: 'Jeff Kanashiro',
@@ -19,7 +40,7 @@ export default class TaskListStore {
         },
         {
             number: 2,
-            title: 'TT64 - Criar tela de perfil',
+            title: 'TT65 - Fazer qualquer coisa',
             description: 'Tela que deve exibir as informações pessoais',
             dueDate: '05/06/05',
             remainingTime: '7 days',
@@ -242,10 +263,15 @@ export default class TaskListStore {
         }
     ]
 
+    setTaskList(taskList){
+        this.taskList = taskList
+    }
+
     constructor () {
         makeObservable(this, {
           taskList: observable,
-          activities: observable
+          activities: observable,
+          setTaskList: action,
       })
     }
 

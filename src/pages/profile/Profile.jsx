@@ -1,10 +1,11 @@
-import { useState } from 'react';
 import './Profile.css'
-import profile from '../../assets/profile.png';
-import SideMenu from '../../components/SideMenu/SideMenu.jsx'
 import { Tab, Row, Card, Accordion } from 'react-bootstrap'
+import { inject, observer } from 'mobx-react'
+import profile from '../../assets/profile.png';
 
-const Profile = () => {
+const Profile = inject('login')(observer((props) => {
+
+    const { login } = props;
 
     return (
         <div className="Page">
@@ -17,7 +18,7 @@ const Profile = () => {
                             </div>
                         </div>
                         <div className="ProfileName">
-                            Giuliano Crespe
+                                {login.userInfo.nome}
                             <div className="ProfileText">
                                 25, São Paulo
                             </div>
@@ -102,6 +103,6 @@ const Profile = () => {
             </div>
         </div>
     );
-}
+}));
 
 export default Profile;

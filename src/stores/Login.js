@@ -1,17 +1,20 @@
-import { makeObservable, observable, computed, action, autorun } from "mobx";
+import { makeObservable, observable, action } from "mobx";
 import axios from 'axios'
 
 export default class LoginStore {
 
     userInfo = {
-        nome: 'Giuliano',
-        email: 'gcrespe3@hotmail.com',
-        cpf: '43134782804'
+        email: '',
+        nome: '',
+        cpf: '',
+        senha: '',
+        id: ''
     }
 
     projectsInfo = [
         {
             name: 'Project X',
+            description: 'Web and API applications project for Banco Inter. ReactJs, Electon and Java languages used',
             issuesDone: 32,
             timeSpent: 324,
             remainingIssues: 142,
@@ -20,6 +23,7 @@ export default class LoginStore {
         },
         {
             name: 'Project Y',
+            description: 'Web and API applications project for Banco Inter. ReactJs, Electon and Java languages used',
             issuesDone: 5,
             timeSpent: 34,
             remainingIssues: 59,
@@ -28,6 +32,7 @@ export default class LoginStore {
         },
         {
             name: 'Project Z',
+            description: 'Web and API applications project for Banco Inter. ReactJs, Electon and Java languages used',
             issuesDone: 88,
             timeSpent: 658,
             remainingIssues: 21,
@@ -38,23 +43,45 @@ export default class LoginStore {
 
     notificationCount = 0;
 
-    makeLogin = async (email, password) => {
-        await axios.post(`https://localhost:3300/auth/autenticar`, { email, password })
-                .then(res => {
-                    console.log(res);
-                    console.log(res.data);
-                    this.userInfo = res.data;
-                })
+    async makeLogin (email, password) {
+
+        console.log(email, password)
+
+        try {
+
+            var validation = false;
+
+            const response = await axios.get('https://60ff6e73257411001707896e.mockapi.io/timetracker/api/login')
+
+            response.data.map((res) => {
+                console.log(res)
+                if(res.email == email){
+                    console.log('????????????????')
+                    if(res.senha == password){
+                        console.log('??????????????????????????????????????')
+                        this.setUserInfo(res);
+                        validation = true;
+                    }
+                }
+                        
+            })
+
+            return validation;
+
+        }catch(e){
+
+        }
+        
     }
 
-    setUserInfo (nome, email, senha, cpf){
-        var userInfo = {
-            nome: nome,
-            email: email,
-            senha: senha,
-            cpf: cpf
-        }
-        this.userInfo = userInfo
+    setUserInfo (data) {
+
+        this.userInfo.cpf = data.cpf
+        this.userInfo.email = data.email
+        this.userInfo.nome = data.nome
+        this.userInfo.senha = data.senha
+        this.userInfo.id = data.id
+
     }
 
     constructor () {
@@ -62,7 +89,8 @@ export default class LoginStore {
           userInfo: observable,
           notificationCount: observable,
           projectsInfo: observable,
-          makeLogin: action
+          makeLogin: action,
+          setUserInfo: action,
       })
     }
 

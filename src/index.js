@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import Home from './pages/home/Home.jsx'
 import Profile from './pages/profile/Profile.jsx'
-import Calendar from './pages/calendar/Calendar.jsx'
+import CalendarPage from './pages/calendar/Calendar.jsx'
 import TaskList from './pages/taskList/TaskList.jsx'
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Switch, Route } from 'react-router-dom' 
@@ -22,7 +22,7 @@ ReactDOM.render(
             <SideMenu>
               <Route path="/home" component={Home} />
               <Route path="/profile" component={Profile} />
-              <Route path="/calendar" component={Calendar} />
+              <Route path="/calendar" component={CalendarPage} />
               <Route path="/taskList" component={TaskList} />
             </SideMenu>
         </Switch>
