@@ -1,25 +1,36 @@
 import { useState } from 'react' 
 import './TaskList.css'
-import { Button, ListGroup, Card, ListGroupItem} from 'react-bootstrap'
+import { Button, ListGroup, Card, ListGroupItem, Toast, Spinner} from 'react-bootstrap'
 import { inject, observer } from 'mobx-react'
-import ButtonCustom from '../../components/ButtonCustom/ButtonCustom'
 
 const TaskList = inject('taskList', 'login')(observer((props) => {
 
     const { taskList, login } = props;
 
-    const [selectedIssueDetails, setSelectedIssueDetails] = useState(0);
+    const [selectedIssueDetails, setSelectedIssueDetails] = useState(0)
     const [taskListState, setTaskListState] = useState(taskList.taskList)
+    const [taskAssigned, setTaskAssigned] = useState(false)
+    const [loading, setLoading] = useState(false)
 
     const doAssignIssue = () => {
 
-        var tasks = taskListState;
+        setLoading(true)
+        
+        setTimeout(() => {
+            
+            var tasks = taskListState;
 
-        tasks[selectedIssueDetails].assignee = login.userInfo.nome;
+            tasks[selectedIssueDetails].assignee = login.userInfo.nome;
 
-        setTaskListState(tasks);
+            setTaskListState(tasks);
 
-        taskList.setTaskList(taskListState);
+            taskList.setTaskList(taskListState);
+
+            setTaskAssigned(true);
+
+            setLoading(false)
+
+        }, 2000);
 
     }
 
@@ -27,7 +38,7 @@ const TaskList = inject('taskList', 'login')(observer((props) => {
         <div className="Page">
             <div className="HomeSectionTaskList">
                 <div className="List">
-                    <ListGroup horizontal style={{width: '100%', backgroundColor: '#000000', fontSize: '12px', height: '6vh'}}>
+                    <ListGroup horizontal style={{width: '100%', backgroundColor: '#ffffff', fontSize: '12px', height: '6vh'}}>
                         <ListGroup.Item style={{width: '15%', borderWidth: '1px', borderColor: '#dbe2ef', backgroundColor: '#ffffff'}}>Assigne</ListGroup.Item>
                         <ListGroup.Item style={{width: '28%', borderWidth: '1px', borderColor: '#dbe2ef', backgroundColor: '#ffffff'}}>Title</ListGroup.Item>
                         <ListGroup.Item style={{width: '22%', borderWidth: '1px', borderColor: '#dbe2ef', backgroundColor: '#ffffff'}}>Due date</ListGroup.Item>
@@ -107,26 +118,6 @@ const TaskList = inject('taskList', 'login')(observer((props) => {
                     </div>
                     <div className="ControlButtons">
                         <div className="ControlButton">
-                            <>
-                                <style type="text/css">
-                                {`
-                                .btn-outline-secondary {
-                                    border-color: #112d4e;
-                                    color: #112d4e;
-                                }
-                                .btn-outline-secondary:hover {
-                                    background-color: #112d4e;
-                                    color: #ffffff;
-                                    border-color: #112d4e;
-                                }
-                                `}
-                                </style>
-                                <Button style={{width: '100%', height: '50%'}} variant="outline-secondary">
-                                <div style={{marginTop: "-5px"}}>
-                                    Cancel
-                                </div>
-                                </Button>
-                            </>
                         </div>
                         <div className="ControlButton">
                             <>
@@ -147,14 +138,29 @@ const TaskList = inject('taskList', 'login')(observer((props) => {
                                         variant="outline-secondary" 
                                         disabled={taskListState[selectedIssueDetails].assignee == "" ? false : true}
                                         onClick={() => doAssignIssue()}>
-                                    <div style={{marginTop: "-5px"}}>
-                                        Pick
-                                    </div>
+                                            <div style={{marginTop: '-5%'}}>
+                                            {loading ? 
+                                                <Spinner animation="border" size="sm" style={{marginBottom: '2px'}}/> : 'Pick'}    
+                                            </div>
                                 </Button>
                             </>
                         </div>
                     </div>
                 </div>
+                <>
+                    <Toast onClose={() => setTaskAssigned(false)} show={taskAssigned} delay={3000} autohide style={{position: 'absolute', right: '0', top: '0', margin: '20px'}}>
+                        <Toast.Header>
+                            <img
+                                src="holder.js/20x20?text=%20"
+                                className="rounded me-2"
+                                alt=""
+                            />
+                            <strong className="me-auto" style={{width: '65%', textAlign: 'left'}}>Notification</strong>
+                            <small style={{width: '25%', right: '0'}}>Just now</small>
+                        </Toast.Header>
+                        <Toast.Body>Task was assigned to you successfully</Toast.Body>
+                    </Toast>
+                </>
             </div>
         </div>
     );

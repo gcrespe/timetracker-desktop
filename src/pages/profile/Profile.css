@@ -33,6 +33,9 @@
 .ProfileBody {
   width: 100%;
   height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .ProfilePicture {
@@ -45,7 +48,7 @@
 .ProfileName {
   width: 50vh;
   letter-spacing: 2px;
-  margin-top: 10%;
+  margin-top: 24%;
   height: 100%;
   text-align: center;
   font-size: 30px;
@@ -53,14 +56,11 @@
 
 .ProfileText {
   font-size: 16px;
+  margin-top: 2%;
   height: 5vh;
   color: #a9a9a9;
-  transition: 0.7s;
+  justify-content: space-evenly;
 }
-
-.ProfileText:hover {
-  color: #454750;
-} 
 
 .Tab {
   width: 45vh;
@@ -74,3 +74,17 @@
   width: 50vh;
   border-color: #dbe2ef;
 }
+
+.dev-home {
+  height: 2vmin;
+  pointer-events: none;
+  margin-top: -1%;
+  margin-right: 3%;
+}
+
+.social-icons {
+  height: 5vmin;
+  pointer-events: none;
+  margin-right: 3%;
+}
+

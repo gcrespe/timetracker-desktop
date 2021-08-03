@@ -19,7 +19,7 @@ const ButtonCustom = (props) => {
                 }
                 `}
             </style>
-            <Button style={{width: '60%', height: '10%'}} variant="outline-secondary">
+            <Button style={{width: '50%', height: '5%'}} variant="outline-secondary">
                 <div style={{marginTop: "-5px"}}>
                     {text}
                 </div>

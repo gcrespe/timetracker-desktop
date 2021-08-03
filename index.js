@@ -1,8 +1,14 @@
 const { app, BrowserWindow } = require("electron")
+const path = require('path');
 
+function App(){
+
+    createWindow()
+    const tray = require('./tray.js')
+    
+}
 
 function createWindow(){
-
     const window = new BrowserWindow({ 
         width: 1200,
         height: 700,
@@ -12,4 +18,4 @@ function createWindow(){
     window.loadURL("http://localhost:3000");
 }
 
-app.on("ready", createWindow);
+app.whenReady().then(App)

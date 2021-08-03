@@ -41,8 +41,6 @@ export default class LoginStore {
         }   
     ]
 
-    notificationCount = 0;
-
     async makeLogin (email, password) {
 
         console.log(email, password)
@@ -54,11 +52,8 @@ export default class LoginStore {
             const response = await axios.get('https://60ff6e73257411001707896e.mockapi.io/timetracker/api/login')
 
             response.data.map((res) => {
-                console.log(res)
                 if(res.email == email){
-                    console.log('????????????????')
                     if(res.senha == password){
-                        console.log('??????????????????????????????????????')
                         this.setUserInfo(res);
                         validation = true;
                     }
@@ -87,7 +82,6 @@ export default class LoginStore {
     constructor () {
         makeObservable(this, {
           userInfo: observable,
-          notificationCount: observable,
           projectsInfo: observable,
           makeLogin: action,
           setUserInfo: action,

@@ -13,26 +13,19 @@
 }
 
 .Section {
-    padding-top: 5%;
-    height: 35vh;
+    padding-top: 3%;
+    height: 45vh;
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     color: #262c37;
     font-size: 30px;
+    padding-right: 3%;
 }
 
 .DownSection {
-    margin-top: 5%;
     width: 100%;
-}
-
-.TitleLowerSection {
-    font-size: 30px;
-    height: 7vh;
-    padding-bottom: 2%;
-    letter-spacing: 3px
 }
 
 .Daily{
@@ -43,6 +36,7 @@
     align-items: center;
     justify-content: space-around;
     flex-direction: row;
+    font-size: 14px;
 }
 
 .SummarySection {

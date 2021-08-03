@@ -263,8 +263,14 @@ export default class TaskListStore {
         }
     ]
 
+    timerValue = 0
+
     setTaskList(taskList){
         this.taskList = taskList
+    }
+
+    setTimerValue(value){
+        this.timerValue = value
     }
 
     constructor () {
@@ -272,6 +278,7 @@ export default class TaskListStore {
           taskList: observable,
           activities: observable,
           setTaskList: action,
+          setTimerValue: action
       })
     }
 

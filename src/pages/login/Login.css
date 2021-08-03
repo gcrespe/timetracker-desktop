@@ -1,0 +1,54 @@
+.LoginWrapper {
+    text-align: center;
+    background-color: #dbe2ef;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .App-logo {
+    height: 30vmin;
+    pointer-events: none;
+  }
+  
+  .dev-home-login {
+    height: 20vmin;
+    pointer-events: none;
+    margin-top: -10%;
+  }
+  
+  .LoginSection { 
+    height: 100vh;
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .FormArea {
+    height: 80vh;
+    width: 75%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+  }
+  
+  .ImageSection { 
+    height: 100vh;
+    width: 75%;
+    background-color: #ffffff;
+    background-size: contain;
+    background-image: url('https://i.imgur.com/KeeRHlH.png');
+    vertical-align: middle;
+  }
+  
+  .LogoWrapper {
+    padding-top: 27%;
+    padding-left: 18%;
+  }
+  
+  
+  
+  
