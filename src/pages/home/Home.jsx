@@ -1,11 +1,8 @@
 import './Home.css'
-import home from '../../assets/home.svg'
 import Card from 'react-bootstrap/Card'
 import { Button, ListGroup, ListGroupItem, ButtonGroup } from 'react-bootstrap'
 import ButtonCustom from '../../components/ButtonCustom/ButtonCustom'
 import { inject, observer } from 'mobx-react'
-import  Timer from 'react-compound-timer'
-import { Component, useState, useEffect } from 'react'
 import TimerDisplay from '../../components/TimerDisplay'
 
  
@@ -70,7 +67,7 @@ const Home = inject('login', 'taskList', 'timerStore')(observer((props) => {
     );
 
     secondButton = (
-        <Button variant="outline-secondary" onClick={() => timerStore.stopTimer()}>Stop</Button>
+        <Button variant="outline-secondary" onClick={() => timerStore.stopTimer()}>Pause</Button>
     );
 
     thirdButton = (
@@ -83,13 +80,23 @@ const Home = inject('login', 'taskList', 'timerStore')(observer((props) => {
       <div className="HomeSection">
         <div className="Section">
           <div style={{width: '60%', height: '100%', borderRadius: '20px', marginLeft: '-3%'}}>
+            <div style={{marginLeft: '3%', textAlign: 'left', fontSize: 40, fontWeight: 'lighter'}}>
+              Bem-vindo, {login.userInfo.nome.split(" ")[0]}.
+            </div>
+            <div>
+              
+            </div>
           </div>
-          <div style={{width: '38%', height: '100%', borderRadius: '20px', marginRight: '-3%'}}>
+          <div style={{width: '38%', height: '100%', borderRadius: '20px', marginRight: '-3%', display: 'flex', flexDirection: 'column', justifyContent: 'space-around'}}>
+            <div style={{fontSize: 18}}>
+              {taskList.selectedTask != null ? taskList.selectedTask.title : ""}
+            </div>
 
-            <div style={{fontSize: 30, letterSpacing: 2}}>
-              <div>
+            <div style={{fontSize: 34, letterSpacing: 2}}>
                 {timerStore.mainDisplay}
-              </div>
+            </div>
+
+            <div>
               <div>
                 <div>
                   <ButtonGroup size="md">

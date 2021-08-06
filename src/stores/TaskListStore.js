@@ -1,5 +1,4 @@
-import { makeObservable, observable, computed, action, autorun } from "mobx";
-import axios from 'axios'
+import { makeObservable, observable, action } from "mobx";
 
 export default class TaskListStore {
 
@@ -35,7 +34,8 @@ export default class TaskListStore {
             assignee: 'Giuliano',
             priority: 'High',
             project: 'Project X',
-            sprint: 'Sprint 1'
+            sprint: 'Sprint 1',
+            state: 'DONE'
 
         },
         {
@@ -48,7 +48,8 @@ export default class TaskListStore {
             assignee: '',
             priority: 'High',
             project: 'Project X',
-            sprint: 'Sprint 1'
+            sprint: 'Sprint 1',
+            state: 'TO DO'
 
         },
         {
@@ -61,7 +62,8 @@ export default class TaskListStore {
             assignee: '',
             priority: 'High',
             project: 'Project X',
-            sprint: 'Sprint 1'
+            sprint: 'Sprint 1',
+            state: 'TO DO'
 
         },
         {
@@ -74,7 +76,8 @@ export default class TaskListStore {
             assignee: '',
             priority: 'High',
             project: 'Project X',
-            sprint: 'Sprint 1'
+            sprint: 'Sprint 1',
+            state: 'TO DO'
 
         },
         {
@@ -87,7 +90,8 @@ export default class TaskListStore {
             assignee: '',
             priority: 'High',
             project: 'Project X',
-            sprint: 'Sprint 1'
+            sprint: 'Sprint 1',
+            state: 'TO DO'
 
         },
         {
@@ -100,7 +104,8 @@ export default class TaskListStore {
             assignee: '',
             priority: 'High',
             project: 'Project X',
-            sprint: 'Sprint 1'
+            sprint: 'Sprint 1',
+            state: 'TO DO'
 
         },
         {
@@ -113,7 +118,8 @@ export default class TaskListStore {
             assignee: '',
             priority: 'High',
             project: 'Project X',
-            sprint: 'Sprint 1'
+            sprint: 'Sprint 1',
+            state: 'TO DO'
 
         },
         {
@@ -126,7 +132,8 @@ export default class TaskListStore {
             assignee: '',
             priority: 'High',
             project: 'Project X',
-            sprint: 'Sprint 1'
+            sprint: 'Sprint 1',
+            state: 'TO DO'
 
         },
         {
@@ -139,7 +146,8 @@ export default class TaskListStore {
             assignee: '',
             priority: 'High',
             project: 'Project X',
-            sprint: 'Sprint 1'
+            sprint: 'Sprint 1',
+            state: 'TO DO'
 
         },
         {
@@ -152,7 +160,8 @@ export default class TaskListStore {
             assignee: '',
             priority: 'High',
             project: 'Project X',
-            sprint: 'Sprint 1'
+            sprint: 'Sprint 1',
+            state: 'TO DO'
 
         },
         {
@@ -165,7 +174,8 @@ export default class TaskListStore {
             assignee: '',
             priority: 'High',
             project: 'Project X',
-            sprint: 'Sprint 1'
+            sprint: 'Sprint 1',
+            state: 'TO DO'
 
         },
         {
@@ -178,7 +188,8 @@ export default class TaskListStore {
             assignee: '',
             priority: 'High',
             project: 'Project X',
-            sprint: 'Sprint 1'
+            sprint: 'Sprint 1',
+            state: 'TO DO'
 
         },
         {
@@ -191,7 +202,8 @@ export default class TaskListStore {
             assignee: '',
             priority: 'High',
             project: 'Project X',
-            sprint: 'Sprint 1'
+            sprint: 'Sprint 1',
+            state: 'TO DO'
 
         },
         {
@@ -204,7 +216,8 @@ export default class TaskListStore {
             assignee: '',
             priority: 'High',
             project: 'Project X',
-            sprint: 'Sprint 1'
+            sprint: 'Sprint 1',
+            state: 'TO DO'
 
         },
         {
@@ -217,7 +230,8 @@ export default class TaskListStore {
             assignee: '',
             priority: 'High',
             project: 'Project X',
-            sprint: 'Sprint 1'
+            sprint: 'Sprint 1',
+            state: 'TO DO'
 
         },
         {
@@ -230,7 +244,8 @@ export default class TaskListStore {
             assignee: '',
             priority: 'High',
             project: 'Project X',
-            sprint: 'Sprint 1'
+            sprint: 'Sprint 1',
+            state: 'TO DO'
 
         },
         {
@@ -243,7 +258,8 @@ export default class TaskListStore {
             assignee: '',
             priority: 'High',
             project: 'Project X',
-            sprint: 'Sprint 1'
+            sprint: 'Sprint 1',
+            state: 'TO DO'
 
         }
     ]
@@ -263,7 +279,20 @@ export default class TaskListStore {
         }
     ]
 
-    timerValue = 0
+    selectedTask = {
+        number: 1,
+        title: 'TT64 - Criar tela de perfil',
+        description: 'Tela que deve exibir as informações pessoais. Deve ter uma seção para foto, uma para informações de segurança, uma para configuração da própria aplicação',
+        dueDate: '05/06/05',
+        remainingTime: '7 days',
+        creator: 'Jeff Kanashiro',
+        assignee: 'Giuliano',
+        priority: 'High',
+        project: 'Project X',
+        sprint: 'Sprint 1',
+        state: 'DONE'
+
+    }
 
     setTaskList(taskList){
         this.taskList = taskList
@@ -273,12 +302,19 @@ export default class TaskListStore {
         this.timerValue = value
     }
 
+    setSelectedTask(task){
+        this.selectedTask = task
+    }
+
     constructor () {
         makeObservable(this, {
           taskList: observable,
           activities: observable,
+          selectedTask: observable,
           setTaskList: action,
-          setTimerValue: action
+          setTimerValue: action,
+          setSelectedTask: action
+          
       })
     }
 

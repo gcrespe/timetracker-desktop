@@ -100,7 +100,7 @@
 }
 .react-calendar__tile {
   max-width: 100%;
-  height: 6.72em;
+  height: 5.72em;
   text-align: center;
   padding: 0.75em 0.5em;
   background: none;
@@ -174,12 +174,12 @@
   margin-left: -3%;
   justify-content: center;
   letter-spacing: 2px;
+  font-weight: bold;
 }
 
 .IssueDescriptionCalendar {
+  margin-top: 10%;
   width: 90%;
-  height: 85%;
-  border: solid #cccccc;
-  border-width: 1px;
-  border-radius: 6px;
+  height: 95%;
+  overflow: scroll;
 }

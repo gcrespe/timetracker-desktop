@@ -52,10 +52,11 @@ export default class LoginStore {
             const response = await axios.get('https://60ff6e73257411001707896e.mockapi.io/timetracker/api/login')
 
             response.data.map((res) => {
-                if(res.email == email){
-                    if(res.senha == password){
+                if(res.email === email){
+                    if(res.senha === password){
                         this.setUserInfo(res);
                         validation = true;
+                        return res;
                     }
                 }
                         

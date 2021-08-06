@@ -9,26 +9,41 @@ const TaskList = inject('taskList', 'login')(observer((props) => {
 
     const [selectedIssueDetails, setSelectedIssueDetails] = useState(0)
     const [taskListState, setTaskListState] = useState(taskList.taskList)
-    const [taskAssigned, setTaskAssigned] = useState(false)
     const [loading, setLoading] = useState(false)
+    const [notificationMessage, setNotificationMessage] = useState("")
+    const [notification, setNotification] = useState(false)
 
     const doAssignIssue = () => {
 
         setLoading(true)
         
         setTimeout(() => {
+
+            if(taskList.selectedTask == null){
+
+                var tasks = taskListState;
+
+                tasks[selectedIssueDetails].assignee = login.userInfo.nome;
+
+                setTaskListState(tasks);
+
+                taskList.setTaskList(taskListState);
+                taskList.setSelectedTask(tasks[selectedIssueDetails])
+
+                setNotificationMessage("Task was assigned to you successfully")
+                setNotification(true);
+
+                setLoading(false)
+
+            }else {
+
+                setNotificationMessage("You already have an ongoing task")
+                setNotification(true);
+                setLoading(false)
+                
+            }
             
-            var tasks = taskListState;
-
-            tasks[selectedIssueDetails].assignee = login.userInfo.nome;
-
-            setTaskListState(tasks);
-
-            taskList.setTaskList(taskListState);
-
-            setTaskAssigned(true);
-
-            setLoading(false)
+            
 
         }, 2000);
 
@@ -50,12 +65,12 @@ const TaskList = inject('taskList', 'login')(observer((props) => {
                         { taskListState.map( (task, index) => {
                             return (
                                 <ListGroup className="ListGroup" horizontal style={{width: '100%', color: '#cccccc', fontSize: '12px', justifyContent: 'center', alignContent: 'center', height: '10vh', paddingTop: '3px'}}>
-                                    <ListGroup.Item style={{width: '15%', backgroundColor: '#ffffff', paddingTop: '20px', border: 'none', color: '#aaaaaa'}}>{task.assignee}</ListGroup.Item>
-                                    <ListGroup.Item style={{width: '28%', backgroundColor: '#ffffff', paddingTop: '20px', border: 'none', color: '#aaaaaa'}}>{task.title}</ListGroup.Item>
-                                    <ListGroup.Item style={{width: '22%', backgroundColor: '#ffffff', paddingTop: '20px', border: 'none', color: '#aaaaaa'}}>{task.dueDate}</ListGroup.Item>
-                                    <ListGroup.Item style={{width: '17%', backgroundColor: '#ffffff', paddingTop: '20px', border: 'none', color: '#aaaaaa'}}>{task.project}</ListGroup.Item>
-                                    <ListGroup.Item style={{width: '13%', backgroundColor: '#ffffff', paddingTop: '20px', border: 'none', color: '#aaaaaa'}}>{task.sprint}</ListGroup.Item>
-                                    <ListGroup.Item style={{width: '17%', backgroundColor: '#ffffff', paddingTop: '20px', border: 'none', color: '#aaaaaa'}}>
+                                    <ListGroup.Item style={{width: '15%', paddingTop: '20px', border: 'none', color: '#aaaaaa'}}>{task.assignee}</ListGroup.Item>
+                                    <ListGroup.Item style={{width: '28%', paddingTop: '20px', border: 'none', borderBottom: task.state == 'DONE' ? '1.5px solid green' : '0px', color: '#aaaaaa'}}>{task.title}</ListGroup.Item>
+                                    <ListGroup.Item style={{width: '22%', paddingTop: '20px', border: 'none', color: '#aaaaaa'}}>{task.dueDate}</ListGroup.Item>
+                                    <ListGroup.Item style={{width: '17%', paddingTop: '20px', border: 'none', color: '#aaaaaa'}}>{task.project}</ListGroup.Item>
+                                    <ListGroup.Item style={{width: '13%', paddingTop: '20px', border: 'none', color: '#aaaaaa'}}>{task.sprint}</ListGroup.Item>
+                                    <ListGroup.Item style={{width: '17%', paddingTop: '20px', border: 'none', color: '#aaaaaa'}}>
                                             <>
                                                 <style type="text/css">
                                                 {`
@@ -148,7 +163,7 @@ const TaskList = inject('taskList', 'login')(observer((props) => {
                     </div>
                 </div>
                 <>
-                    <Toast onClose={() => setTaskAssigned(false)} show={taskAssigned} delay={3000} autohide style={{position: 'absolute', right: '0', top: '0', margin: '20px'}}>
+                    <Toast onClose={() => setNotification(false)} show={notification} delay={3000} autohide style={{position: 'absolute', right: '0', top: '0', margin: '20px'}}>
                         <Toast.Header>
                             <img
                                 src="holder.js/20x20?text=%20"
@@ -158,7 +173,7 @@ const TaskList = inject('taskList', 'login')(observer((props) => {
                             <strong className="me-auto" style={{width: '65%', textAlign: 'left'}}>Notification</strong>
                             <small style={{width: '25%', right: '0'}}>Just now</small>
                         </Toast.Header>
-                        <Toast.Body>Task was assigned to you successfully</Toast.Body>
+                        <Toast.Body>{notificationMessage}</Toast.Body>
                     </Toast>
                 </>
             </div>
