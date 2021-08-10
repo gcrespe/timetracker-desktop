@@ -3,7 +3,7 @@ import logo from '../../assets/logo.png';
 import dev from '../../assets/logoSimplesPrincipal.png'
 import './Login.css';
 import { Link, useHistory } from 'react-router-dom'
-import { Button, Form, Spinner, Toast} from 'react-bootstrap';
+import { Button, Form, Spinner, Toast, Modal, InputGroup, FormControl} from 'react-bootstrap';
 import { inject, observer } from 'mobx-react'
 
 const Login = inject('login')(observer((props) => {
@@ -14,7 +14,23 @@ const Login = inject('login')(observer((props) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [isLoading, setLoading] = useState(false);
+    const [isLoadingModal, setLoadingModal] = useState(false);
     const [loginError, setLoginError] = useState(false);
+
+    const [show, setShow] = useState(false);
+
+    const handleCloseModal = () => {
+
+      setLoadingModal(true)
+      
+      setTimeout(() => {
+
+        setLoadingModal(false); 
+        setShow(false)
+
+      }, 2000);
+      
+    };
   
     const handleLoginClick = async () => {
   
@@ -34,7 +50,7 @@ const Login = inject('login')(observer((props) => {
   
           setLoading(false); 
   
-        }, 2000);
+        }, 6000);
         
         
   
@@ -53,6 +69,28 @@ const Login = inject('login')(observer((props) => {
   
     return (
       <div className="LoginWrapper">
+        <Modal show={show} onHide={handleCloseModal}>
+          <Modal.Header closeButton>
+            <Modal.Title>Esqueci minha senha</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <div>
+              Insira seu e-mail no input abaixo, e enviaremos um e-mail com uma nova senha.
+            </div>
+            <InputGroup className="mb-3" style={{marginTop: '20px'}}>
+                <FormControl aria-label="E-mail" placeholder={"E-mail"}/>
+            </InputGroup>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={() => setShow(false)}>
+              Close
+            </Button>
+            <Button variant="outline-secondary" style={{width: '25%'}} onClick={handleCloseModal}>
+              {isLoadingModal ? 
+                    <Spinner animation="border" size="sm" style={{marginBottom: '2px'}}/> : 'Send email'} 
+            </Button>
+          </Modal.Footer>
+        </Modal>
         <div className="LoginSection">
           <div className="FormArea">
             <div style={{width: '100%', height: '10%'}}>
@@ -96,7 +134,7 @@ const Login = inject('login')(observer((props) => {
                 {isLoading ? 
                   <Spinner animation="border" size="sm" style={{marginBottom: '2px'}}/> : 'Login'}
               </Button>
-              <Link style={{color: '#112d4e', marginTop: '-40%'}}>
+              <Link style={{color: '#112d4e', marginTop: '-40%'}} onClick={() => setShow(true)}>
                 Forgot my password
               </Link>
             </>

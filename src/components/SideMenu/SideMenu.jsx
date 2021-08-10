@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom'
 
 const SideMenu = (props) => {
 
-  const [active, setActive] = useState("none")
+  const [active, setActive] = useState("home")
 
   const history = useHistory();
 

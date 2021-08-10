@@ -43,8 +43,6 @@ const TaskList = inject('taskList', 'login')(observer((props) => {
                 
             }
             
-            
-
         }, 2000);
 
     }
@@ -66,7 +64,7 @@ const TaskList = inject('taskList', 'login')(observer((props) => {
                             return (
                                 <ListGroup className="ListGroup" horizontal style={{width: '100%', color: '#cccccc', fontSize: '12px', justifyContent: 'center', alignContent: 'center', height: '10vh', paddingTop: '3px'}}>
                                     <ListGroup.Item style={{width: '15%', paddingTop: '20px', border: 'none', color: '#aaaaaa'}}>{task.assignee}</ListGroup.Item>
-                                    <ListGroup.Item style={{width: '28%', paddingTop: '20px', border: 'none', borderBottom: task.state == 'DONE' ? '1.5px solid green' : '0px', color: '#aaaaaa'}}>{task.title}</ListGroup.Item>
+                                    <ListGroup.Item style={{width: '28%', paddingTop: '20px', border: 'none', color: '#aaaaaa'}}>{task.title}</ListGroup.Item>
                                     <ListGroup.Item style={{width: '22%', paddingTop: '20px', border: 'none', color: '#aaaaaa'}}>{task.dueDate}</ListGroup.Item>
                                     <ListGroup.Item style={{width: '17%', paddingTop: '20px', border: 'none', color: '#aaaaaa'}}>{task.project}</ListGroup.Item>
                                     <ListGroup.Item style={{width: '13%', paddingTop: '20px', border: 'none', color: '#aaaaaa'}}>{task.sprint}</ListGroup.Item>
@@ -83,13 +81,18 @@ const TaskList = inject('taskList', 'login')(observer((props) => {
                                                     color: #000000;
                                                     border-color: #dbe2ef;
                                                 }
+                                                .btn-outline-primary:disabled {
+                                                    color: #34eb74;
+                                                    border-color: #34eb74;
+                                                }
                                                 `}
                                                 </style>
                                                 <Button 
                                                     variant="outline-primary"
                                                     style={{fontSize: '10px', height: '5vh', marginTop: '-10px', width: '80%'}}
+                                                    disabled={task.state == 'DONE' ? true : false}
                                                     onClick={() => setSelectedIssueDetails(index)}>
-                                                Details
+                                                        {task.state  === 'DONE' ? 'Done' : 'Details'}
                                                 </Button>
                                             </>
                                     </ListGroup.Item>
@@ -100,7 +103,7 @@ const TaskList = inject('taskList', 'login')(observer((props) => {
                 </div>
                 <div className="Resume">
                     <div className="Title">
-                        Issue Details
+                        Detalhes
                     </div>
                     <div className="IssueDescription">
                         { taskListState.map( (task, index) => {
@@ -115,13 +118,13 @@ const TaskList = inject('taskList', 'login')(observer((props) => {
                                             </Card.Text>
                                             </Card.Body>
                                             <ListGroup className="list-group-flush" style={{marginLeft: '5%'}}>
-                                                <ListGroupItem>Creator: {task.creator} </ListGroupItem>
+                                                <ListGroupItem>Criador: {task.creator} </ListGroupItem>
                                                 <ListGroupItem>{task.project} </ListGroupItem>
-                                                <ListGroupItem>{task.sprint} - {task.priority} priority</ListGroupItem>
-                                                <ListGroupItem>Due date: {task.dueDate} </ListGroupItem>
+                                                <ListGroupItem>{task.sprint} - {task.priority} Prioridade</ListGroupItem>
+                                                <ListGroupItem>Entrega: {task.dueDate} </ListGroupItem>
                                             </ListGroup>
                                             <Card.Body>
-                                                <Card.Title>Additional information</Card.Title>
+                                                <Card.Title>Informações Adicionais</Card.Title>
                                                 <Card.Text>
                                                     {task.description}
                                                 </Card.Text>

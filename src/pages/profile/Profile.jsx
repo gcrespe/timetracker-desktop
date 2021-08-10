@@ -1,17 +1,30 @@
 import { useState } from 'react'
 import './Profile.css'
-import { FormControl, InputGroup, Form, Button, Spinner } from 'react-bootstrap'
+import { FormControl, InputGroup, Form, Button, Spinner, Toast } from 'react-bootstrap'
 import { inject, observer } from 'mobx-react'
 import profile from '../../assets/profile.png';
 import loc from '../../assets/locationIcon.png'
-import fb from '../../assets/whatsapp.png'
-import wpp from '../../assets/facebook.png'
-import insta from '../../assets/instagram.png'
 
 const Profile = inject('login')(observer((props) => {
 
     const [isLoading, setIsLoading] = useState(false)
+    const [notification, setNotification] = useState(false)
+    const [notificationMessage, setNotificationMessage] = useState("")
     const { login } = props;
+
+    const handleUpdateProfileInfo = () => {
+
+        setIsLoading(true)
+
+        setTimeout(() => {
+
+
+            setNotificationMessage("Successfully updated profile info"); setNotification(true)
+            setIsLoading(false)
+
+        }, 2000);
+
+    }
 
     return (
         <div className="Page">
@@ -79,11 +92,6 @@ const Profile = inject('login')(observer((props) => {
                             <FormControl aria-label="First name" placeholder={"gcrespe3@hotmail.com"}/>
                     </InputGroup>
                     <InputGroup className="mb-3" style={{display: 'flex', flexDirection: 'row'}}>
-                        <div style={{width: '30%', justifyContent: 'space-between', display: 'flex'}}>
-                            <img src={wpp} className="social-icons" alt="logo" />
-                            <img src={fb} className="social-icons" alt="logo" />
-                            <img src={insta} className="social-icons" alt="logo" />
-                        </div>
                         <>
                             <style type="text/css">
                                 {`
@@ -103,12 +111,12 @@ const Profile = inject('login')(observer((props) => {
                                 }
                                 `}
                             </style>    
-                            <div style={{width: '60%'}} />
+                            <div style={{width: '90%'}} />
                             <Button style={{width: '10%'}}
                                 variant="outline-secondary"
                                 disabled={isLoading}
                                 active={isLoading}
-                                onClick={ () => setIsLoading(true)}>
+                                onClick={ () => handleUpdateProfileInfo()}>
                                 {isLoading ? 
                                   <Spinner animation="border" size="sm" style={{marginBottom: '2px'}}/> : 'Atualizar'}
                             </Button>
@@ -116,6 +124,20 @@ const Profile = inject('login')(observer((props) => {
                     </InputGroup>
                 </div> 
             </div>
+            <>
+                <Toast onClose={() => setNotification(false)} show={notification} delay={3000} autohide style={{position: 'absolute', right: '0', top: '0', margin: '20px'}}>
+                    <Toast.Header>
+                        <img
+                            src="holder.js/20x20?text=%20"
+                            className="rounded me-2"
+                            alt=""
+                        />
+                        <strong className="me-auto" style={{width: '65%', textAlign: 'left'}}>Notification</strong>
+                        <small style={{width: '25%', right: '0'}}>Just now</small>
+                    </Toast.Header>
+                    <Toast.Body>{notificationMessage}</Toast.Body>
+                </Toast>
+            </>
         </div>
     );
 }));
