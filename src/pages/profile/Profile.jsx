@@ -10,19 +10,41 @@ const Profile = inject('login')(observer((props) => {
     const [isLoading, setIsLoading] = useState(false)
     const [notification, setNotification] = useState(false)
     const [notificationMessage, setNotificationMessage] = useState("")
+    const [username, setUsername] = useState("")
+    const [register, setRegister] = useState("")
+    const [email, setEmail] = useState("")
+    const [gender, setGender] = useState("")
     const { login } = props;
 
-    const handleUpdateProfileInfo = () => {
+    async function handleUpdateProfileInfo(){
 
         setIsLoading(true)
 
-        setTimeout(() => {
+        try {
 
+            // await login.updateProfileInfo(
+            //     username,
+            //     register,
+            //     email,
+            //     gender
+            // )
 
-            setNotificationMessage("Successfully updated profile info"); setNotification(true)
+            
+            setTimeout(() => {
+
+                setNotificationMessage("Informações atualizadas"); setNotification(true)
+                setIsLoading(false)
+
+            }, 2000);
+
+        }catch(e){
+
+            setNotificationMessage("Não foi possível atualizar as informações"); setNotification(true)
             setIsLoading(false)
 
-        }, 2000);
+        }
+        
+
 
     }
 
@@ -37,7 +59,7 @@ const Profile = inject('login')(observer((props) => {
                             </div>
                         </div>
                         <div className="ProfileName">
-                                {login.userInfo.nome}, 24
+                                {login.userInfo.username}
                             <div className="ProfileText">
                                 <img src={loc} className="dev-home" alt="logo" />
                                 São Paulo
@@ -47,49 +69,46 @@ const Profile = inject('login')(observer((props) => {
                 </div>
                 <div className="ProfileBody">
                     <InputGroup className="mb-3">
-                        <InputGroup.Text style={{backgroundColor: '#dbe2ef', border: 'none', color: '#ffffff'}}>Primeiro e segundo nome</InputGroup.Text>
-                        <FormControl aria-label="First name" placeholder={login.userInfo.nome.split(" ")[0]}/>
-                        <FormControl aria-label="Last name" placeholder={login.userInfo.nome.split(" ")[1]}/>
+                        <InputGroup.Text style={{backgroundColor: '#dbe2ef', border: 'none', color: '#ffffff'}}>Nome de usuário</InputGroup.Text>
+                        <FormControl aria-label="First name" placeholder={login.userInfo.username} onChange={(e) => setUsername(e.target.value)}/>
                     </InputGroup>
                     <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
-                        <InputGroup className="mb-3" style={{width: '35%'}}>
+                        <InputGroup className="mb-3" style={{width: '40%'}}>
                             <InputGroup.Text style={{backgroundColor: '#dbe2ef', border: 'none', color: '#ffffff'}}>Data de registro</InputGroup.Text>
-                            <FormControl aria-label="First name" placeholder={"22/05/2021"} disabled/>
+                            <FormControl aria-label="First name" placeholder={login.userInfo.registered.substring(0,10)} disabled onChange={(e) => setRegister(e.target.value)}/>
                         </InputGroup>
-                        <InputGroup className="mb-3" style={{width: '35%'}}>
-                            <InputGroup.Text style={{backgroundColor: '#dbe2ef', border: 'none', color: '#ffffff'}}>Data de nascimento</InputGroup.Text>
-                            <FormControl aria-label="First name" placeholder={"04/04/1997"}/>
+                        <InputGroup className="mb-3" style={{width: '60%'}}>
+                            <InputGroup.Text style={{marginLeft:'5%', backgroundColor: '#dbe2ef', border: 'none', color: '#ffffff'}}>Endereço de email</InputGroup.Text>
+                            <FormControl aria-label="First name" placeholder={login.userInfo.email} onChange={(e) => setEmail(e.target.value)}/>
                         </InputGroup>
-                        <div style={{width: '23%'}}>
-
-                        </div>
                     </div>
                     <InputGroup className="mb-3">
                         <InputGroup.Text style={{backgroundColor: '#dbe2ef', border: 'none', color: '#ffffff'}}>Gênero</InputGroup.Text>
                             <Form.Check
                                 inline
-                                label="Male"
+                                label="Masculino"
                                 name="group1"
                                 type={"radio"}
                                 id={`inline-radio-1`}
                                 style={{marginLeft: '2%'}}
+                                onChange={(e) => setGender("Masculino")}
                             />
                             <Form.Check
                                 inline
-                                label="Female"
+                                label="Feminino"
                                 name="group1"
                                 type={"radio"}
                                 id={`inline-radio-1`}
+                                onChange={(e) => setGender("Feminino")}
                             />
                             <Form.Check
                                 inline
-                                label="Undefined"
+                                label="Outro"
                                 name="group1"
                                 type={"radio"}
                                 id={`inline-radio-1`}
+                                onChange={() => setGender("Outro")}
                             />
-                            <InputGroup.Text style={{marginLeft:'5%', backgroundColor: '#dbe2ef', border: 'none', color: '#ffffff'}}>Endereço de email</InputGroup.Text>
-                            <FormControl aria-label="First name" placeholder={"gcrespe3@hotmail.com"}/>
                     </InputGroup>
                     <InputGroup className="mb-3" style={{display: 'flex', flexDirection: 'row'}}>
                         <>

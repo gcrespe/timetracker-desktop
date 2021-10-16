@@ -2,7 +2,7 @@ import {Button} from 'react-bootstrap'
 
 const ButtonCustom = (props) => {
 
-    const { text } = props;
+    const { text, onClick, width, height, disabled, active} = props;
 
     return (
         <>
@@ -19,7 +19,12 @@ const ButtonCustom = (props) => {
                 }
                 `}
             </style>
-            <Button style={{width: '50%', height: '5%'}} variant="outline-secondary">
+            <Button 
+                style={{width: width, height: height}} 
+                variant="outline-secondary" 
+                onClick={onClick}
+                disabled={disabled}
+                active={active}>
                 <div style={{marginTop: "-5px"}}>
                     {text}
                 </div>

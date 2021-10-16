@@ -80,7 +80,8 @@
 ::-webkit-scrollbar-thumb
 {
 	border-radius: 10px;
-	background-color: #dbe2ef;
+	background-color: #edf1f8;
+    opacity: 10%;
 }
 
   

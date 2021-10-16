@@ -8,6 +8,8 @@
   }
   
   .App-logo {
+    margin-right: 10%;
+    margin-top: -2%;
     height: 30vmin;
     pointer-events: none;
   }
@@ -32,6 +34,14 @@
     width: 75%;
     display: flex;
     justify-content: space-around;
+    flex-direction: column;
+  }
+
+  .FormButtons {
+    margin-top: 20%;
+    height: 20vh;
+    justify-content: space-around;
+    display: flex;
     flex-direction: column;
   }
   

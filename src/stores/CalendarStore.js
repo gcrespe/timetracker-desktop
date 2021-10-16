@@ -42,6 +42,14 @@ export default class CalendarStore {
             client: 'Client 4',
             project: 'Project 4',
             date: '6-8-2021'
+        },
+        {
+            name: 'Event 6',
+            description: 'Description 6',
+            responsible: 'Responsible 6',
+            client: 'Client 6',
+            project: 'Project 6',
+            date: '20-8-2021'
         }
     ]
 

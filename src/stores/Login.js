@@ -1,82 +1,193 @@
 import { makeObservable, observable, action } from "mobx";
-import axios from 'axios'
+import api from '../api/api.js'
 
 export default class LoginStore {
 
     userInfo = {
+        id: '',
+        username: '',
+        registered: '',
+        last_login: '',
+        birthdate: null,
         email: '',
-        nome: '',
-        cpf: '',
-        senha: '',
-        id: ''
+        gender: '',
     }
 
-    projectsInfo = [
-        {
-            name: 'Project X',
-            description: 'Web and API applications project for Banco Inter. ReactJs, Electon and Java languages used',
-            issuesDone: 32,
-            timeSpent: 324,
-            remainingIssues: 142,
-            remainingTime: 678,
-            releaseDate: '22/08/2021',   
-        },
-        {
-            name: 'Project Y',
-            description: 'Web and API applications project for Banco Inter. ReactJs, Electon and Java languages used',
-            issuesDone: 5,
-            timeSpent: 34,
-            remainingIssues: 59,
-            remainingTime: 1562,
-            releaseDate: '11/10/2021',   
-        },
-        {
-            name: 'Project Z',
-            description: 'Web and API applications project for Banco Inter. ReactJs, Electon and Java languages used',
-            issuesDone: 88,
-            timeSpent: 658,
-            remainingIssues: 21,
-            remainingTime: 791,
-            releaseDate: '02/09/2021',   
-        }   
-    ]
+    projectsInfo = null
 
-    async makeLogin (email, password) {
+    lastTaskInfo = null
 
-        console.log(email, password)
+    ongoingTask = null
+
+    async makeLogin (username, password) {
+        
+        var status;
+        try {
+
+            await api.post("/login", {
+                username, 
+                password
+
+            }).then((response) => {
+                localStorage.setItem('token', response.data.token)
+                status = response.status
+                this.setUserInfo(response.data);
+            })
+
+        }catch(e){
+            console.log(e);
+        }
+        return status
+        
+    }
+
+    async register (email, username, password, password_repeat) {
+
+        var status;
 
         try {
 
-            var validation = false;
+            await api.post("/sign-up", {
+                email, 
+                username,
+                password,
+                password_repeat
 
-            const response = await axios.get('https://60ff6e73257411001707896e.mockapi.io/timetracker/api/login')
-
-            response.data.map((res) => {
-                if(res.email === email){
-                    if(res.senha === password){
-                        this.setUserInfo(res);
-                        validation = true;
-                        return res;
-                    }
-                }
-                        
+            }).then((response) => {
+                localStorage.setItem('token', response.data.token)
+                status = response.status
+                this.userInfo = response.data.user
             })
 
-            return validation;
+        }catch(e){
+            console.log(e);
+        }
+        return status
+    }
+
+    async getProjects () {
+
+        this.projectsInfo = [{
+            id: null,
+            name: null,
+            description: null,
+            participant: null,
+            dueDate: null,
+            category: null,
+            color: null,
+            totalTasks: null,
+            remainingTasks: null,
+            doneTasks: null
+        }]
+
+        try {
+
+            await api.get(`/projects/projects?participant=${this.userInfo.username}`)
+            .then((response) => {
+                this.projectsInfo = response.data.projects
+                console.log(response)
+            })
 
         }catch(e){
-
+            console.log(e);
         }
-        
+
+    }
+
+    async addProject (name, description, dueDate, category, color) {
+
+        try {
+
+            await api.post(`/projects/newProject`, {
+                name,
+                description,
+                participant: this.userInfo.username,
+                dueDate,
+                category,
+                color
+            })
+            .then((response) => {
+                console.log(response)
+            })
+
+        }catch(e){
+            console.log(e);
+        }
+
+    }
+
+    async getOngoingTask(username){
+
+        try {
+
+            await api.post(`/tasks/get-ongoing-task`, {
+                username
+            })
+            .then((response) => {
+                this.ongoingTask = response.data.task
+            })
+
+        }catch(e){
+            console.log(e);
+        }
+
+    }
+
+    async getTasksStatus(username, project){
+
+        try {
+
+            await api.post(`/projects/get-tasks-status`, {
+                username,
+                project
+            })
+            .then((response) => {
+
+                for(var i = 0; i < this.projectsInfo.length; i++){
+                    if(this.projectsInfo[i].name == project){
+                        this.projectsInfo[i].totalTasks = response.data.totalTasks
+                        this.projectsInfo[i].remainingTasks = response.data.remainingTasks
+                        this.projectsInfo[i].doneTasks = response.data.doneTasks
+                    }
+                }
+                return response.data;
+            })
+
+        }catch(e){
+            console.log(e);
+        }
+
+    }
+
+    async changeUserInfo(username, newUsername, birthdate, email){
+
+        try {
+
+            await api.post(`/update-profile-info`, {
+                username,
+                newUsername,
+                birthdate,
+                email
+            })
+            .then((response) => {
+                console.log(response)
+            })
+
+        }catch(e){
+            console.log(e);
+        }
+
     }
 
     setUserInfo (data) {
 
-        this.userInfo.cpf = data.cpf
-        this.userInfo.email = data.email
-        this.userInfo.nome = data.nome
-        this.userInfo.senha = data.senha
-        this.userInfo.id = data.id
+        console.log("data", data)
+
+        this.userInfo.username = data.user.username
+        this.userInfo.id = data.user.id
+        this.userInfo.last_login = data.user.last_login
+        this.userInfo.registered = data.user.registered
+        this.userInfo.email = data.user.email
 
     }
 

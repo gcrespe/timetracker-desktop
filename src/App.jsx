@@ -1,5 +1,5 @@
 import './App.css';
-import React, {useState} from 'react';
+import React from 'react';
 import './index.css';
 import Login from './pages/login/Login.jsx';
 import Home from './pages/home/Home.jsx'
@@ -9,17 +9,16 @@ import TaskList from './pages/taskList/TaskList.jsx'
 import { BrowserRouter, Switch, Route } from 'react-router-dom' 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SideMenu from './components/SideMenu/SideMenu.jsx'
-import { inject, observer} from 'mobx-react'
+import Tray from './pages/tray/Tray.jsx'
+import "react-datepicker/dist/react-datepicker.css";
 
-
-const App = inject('taskList')(observer((props) => {
-
-  const { taskList } = props;
+const App = () => {
 
   return (
     <BrowserRouter>
         <Switch>
           <Route path="/" exact={true} component={Login} />
+          <Route path="/tray" component={Tray} />
           <SideMenu>
             <Route path="/home" component={Home} />
             <Route path="/profile" component={Profile} />
@@ -29,6 +28,6 @@ const App = inject('taskList')(observer((props) => {
       </Switch>
     </BrowserRouter>
   );
-}))
+}
 
 export default App;

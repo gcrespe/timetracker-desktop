@@ -3,7 +3,7 @@ import {observer} from 'mobx-react';
 
 const TimerDisplay = observer(({leftText, rightText}) => {
   return (
-    <div>
+    <div style={{display: 'flex', justifyContent: 'space-evenly', flexDirection: 'row'}}>
       <div>
         {leftText}
       </div>
