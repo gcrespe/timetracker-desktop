@@ -397,26 +397,30 @@ const Home = inject('login', 'taskList', 'timerStore')(observer((props) => {
 							:
 								login.projectsInfo != null && login.projectsInfo.length > 0 && login.projectsInfo.length < 3 ? 
 									<>	
-										{	
+										{		
 											login.projectsInfo.map( project => {
 												return (
 												<div style={{marginLeft: '1%', marginRight: '1%'}}>
-													<Card style={{ width: '20rem' , border: 'none', height: '20rem'}} className="text-left">
-													<Card.Body>
-														<Card.Title>{project.name}</Card.Title>
-														<Card.Text>
-														{project.description}
-														</Card.Text>
-													</Card.Body>
-													<ListGroup className="list-group-flush">
-														<ListGroupItem style={{border: 'none'}}>Total de tarefas: {project.totalTasks}</ListGroupItem>
-														<ListGroupItem style={{border: 'none'}}>Total de tarefas restantes: {project.remainingTasks}</ListGroupItem>
-														<ListGroupItem style={{border: 'none'}}>Total de tarefas realizadas: {project.doneTasks}</ListGroupItem>
-														<ListGroupItem>Data final: {project.dueDate}</ListGroupItem>
-													</ListGroup>
-													{/* <Card.Body>
-														<ButtonCustom text={"Details"}/>
-													</Card.Body> */}
+													<Card style={{ width: '22rem', height: '19rem', border: 'none'}} className="text-left">
+														<Card.Body>
+															<Card.Title style={{backgroundColor: '#dbe2ef',  borderTopLeftRadius: '5px', borderTopRightRadius: '5px', height: '7vh', color: '#112d4e', padding: '13px', display: 'flex', flexDirection: 'row', fontSize: '18px'}}>
+																{project.name}
+																<div style={{fontSize: '14px', padding: '3px', width: '72%', textAlign: 'right', fontWeight: 'normal'}}>
+																	{project.dueDate != null ? project.dueDate.replaceAll("-", "/") : null}
+																</div>
+															</Card.Title>
+															<Card.Text style={{marginLeft: '15px', backgroundColor: '#ffffff'}}>
+																{project.description}
+															</Card.Text>
+														</Card.Body>
+														<ListGroup className="list-group-flush">
+															<ListGroupItem style={{border: 'none', marginLeft: '15px'}}>Total de tarefas: {project.totalTasks}</ListGroupItem>
+															<ListGroupItem style={{border: 'none', marginLeft: '15px'}}>Total de tarefas restantes: {project.remainingTasks}</ListGroupItem>
+															<ListGroupItem style={{border: 'none', marginLeft: '15px'}}>Total de tarefas realizadas: {project.doneTasks}</ListGroupItem>
+														</ListGroup>
+														{/* <Card.Body>
+															<ButtonCustom text={"Details"}/>
+														</Card.Body> */}
 													</Card>
 												</div>
 												)
@@ -431,7 +435,7 @@ const Home = inject('login', 'taskList', 'timerStore')(observer((props) => {
 														</Card.Text>
 													</Card.Body>
 													<ListGroup className="list-group-flush">
-														<ListGroupItem style={{border: 'none'}}>Novos projetos podem ser criados clicando no botão abaixo</ListGroupItem>
+														<ListGroupItem style={{border: 'none', justifyContent: 'center', display: 'flex'}}><div style={{width: '70%'}}>Novos projetos podem ser criados clicando no botão abaixo</div></ListGroupItem>
 														<ListGroupItem style={{border: 'none'}}></ListGroupItem>
 													</ListGroup>
 													<Card.Body>
@@ -464,21 +468,25 @@ const Home = inject('login', 'taskList', 'timerStore')(observer((props) => {
 								login.projectsInfo.map( project => {
 									return (
 										<div style={{marginLeft: '1%', marginRight: '1%'}}>
-											<Card style={{ width: '20rem' , border: 'none' }} className="text-left">
+											<Card style={{ width: '22rem', height: '19rem', border: 'none'}} className="text-left">
 												<Card.Body>
-													<Card.Title>{project.name}</Card.Title>
-													<Card.Text>
-													{project.description}
+													<Card.Title style={{backgroundColor: '#dbe2ef',  borderTopLeftRadius: '5px', borderTopRightRadius: '5px', height: '7vh', color: '#112d4e', padding: '13px', display: 'flex', flexDirection: 'row', fontSize: '18px'}}>
+														{project.name}
+														<div style={{fontSize: '14px', padding: '3px', width: '72%', textAlign: 'right', fontWeight: 'normal'}}>
+															{project.dueDate != null ? project.dueDate.replaceAll("-", "/") : null}
+														</div>
+													</Card.Title>
+													<Card.Text style={{marginLeft: '15px', backgroundColor: '#ffffff'}}>
+														{project.description}
 													</Card.Text>
 												</Card.Body>
 												<ListGroup className="list-group-flush">
-													<ListGroupItem style={{border: 'none'}}>Total de tarefas: {project.totalTasks}</ListGroupItem>
-													<ListGroupItem style={{border: 'none'}}>Total de tarefas restantes: {project.remainingTasks}</ListGroupItem>
-													<ListGroupItem style={{border: 'none'}}>Total de tarefas realizadas: {project.doneTasks}</ListGroupItem>
-													<ListGroupItem>Data final: {project.dueDate}</ListGroupItem>
+													<ListGroupItem style={{border: 'none', marginLeft: '15px'}}>Total de tarefas: {project.totalTasks}</ListGroupItem>
+													<ListGroupItem style={{border: 'none', marginLeft: '15px'}}>Total de tarefas restantes: {project.remainingTasks}</ListGroupItem>
+													<ListGroupItem style={{border: 'none', marginLeft: '15px'}}>Total de tarefas realizadas: {project.doneTasks}</ListGroupItem>
 												</ListGroup>
 												{/* <Card.Body>
-													<ButtonCustom width={"60%"} height={"20%"} text={"Details"}/>
+													<ButtonCustom text={"Details"}/>
 												</Card.Body> */}
 											</Card>
 										</div>
