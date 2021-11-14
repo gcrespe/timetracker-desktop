@@ -16,7 +16,8 @@ function createWindow(){
     window = new BrowserWindow({ 
         width: 1200,
         height: 700,
-        frame: true
+        frame: true,
+        resizable: false
     });
 
     window.loadURL("http://localhost:3000");

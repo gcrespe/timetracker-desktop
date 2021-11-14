@@ -69,6 +69,26 @@ export default class TimerStore {
 		this.isRunning = false;
 	}
 
+	setTimer(laps){
+		
+		var totalseconds = 0;
+
+		laps.map((lap) => {
+			totalseconds += lap.seconds;
+		})
+
+		this.timer.setTime(totalseconds * 1000);
+		this.timer.saveTime()
+	}
+
+	setLaps(laps){
+		laps.map((lap) => {
+			this.laps.push(new Timer(lap.seconds * 1000));
+		})
+
+		console.log(this.laps)
+	}
+
 	constructor () {
 		makeObservable(this, {
 			mainDisplay: computed,

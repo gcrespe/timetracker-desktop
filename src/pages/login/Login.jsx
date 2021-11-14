@@ -36,13 +36,9 @@ const Login = inject('login')(observer((props) => {
     const handleCloseModalForgotPassword = () => {
 
 		setLoadingModalForgotPassword(true)
-      
-      	setTimeout(() => {
 
-        	setLoadingModalForgotPassword(false); 
-        	setShowForgotPassord(false)
-
-      	}, 2000);
+		setLoadingModalForgotPassword(false); 
+		setShowForgotPassord(false)
       
     };
   
@@ -119,7 +115,7 @@ const Login = inject('login')(observer((props) => {
 		setPassword("");
 
 		setKey("account")
-  }
+  	}
 
 	const closeModal = () => {
 		
@@ -127,6 +123,27 @@ const Login = inject('login')(observer((props) => {
         setShowRegister(false);
 		setLoadingModalForgotPassword(false); 
         setShowForgotPassord(false);
+
+	}
+
+	const handleSendEmail = () => {
+
+		setLoadingModalForgotPassword(true)
+
+		const response = login.sendEmailForgotPassword(email)
+
+		if(response){
+
+			setLoginMessage("Enviamos um email com a sua nova senha.")
+        	setLoginError(true);
+
+		}else {
+
+			setLoginMessage("Ocorreu um erro ao efetuar o envio do email.")
+        	setLoginError(true);
+
+		}
+		handleCloseModalForgotPassword()
 
 	}
   
@@ -143,11 +160,11 @@ const Login = inject('login')(observer((props) => {
 					Insira seu e-mail abaixo, e enviaremos um e-mail com uma nova senha.
 					</div>
 					<InputGroup className="mb-3" style={{marginTop: '20px'}}>
-						<FormControl aria-label="E-mail" placeholder={"E-mail"}/>
+						<FormControl aria-label="E-mail" placeholder={"E-mail"} onChange={(e) => setEmail(e.target.value)}/>
 					</InputGroup>
 				</Modal.Body>
 				<Modal.Footer>
-					<Button variant="outline-secondary" style={{width: '25%'}} onClick={handleCloseModalForgotPassword}>
+					<Button variant="outline-secondary" style={{width: '25%'}} onClick={() => handleSendEmail()}>
 					{isLoadingModalForgotPassword ? 
 							<Spinner animation="border" size="sm" style={{marginBottom: '2px'}}/> : 'Enviar email'} 
 					</Button>

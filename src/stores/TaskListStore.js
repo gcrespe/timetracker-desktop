@@ -1,16 +1,19 @@
-import { makeObservable, observable, action } from "mobx";
+import { makeObservable, observable, action, computed } from "mobx";
 import api from '../api/api.js'
 
 export default class TaskListStore {
 
     taskList = []
 
-    activities = []
+    activitiesList = []
 
     selectedTask = null
 
     assigned = false;
+
     assignmentCanc = false;
+
+    taskTime = 0;
 
     async getTasks(username){
         try {
@@ -125,16 +128,34 @@ export default class TaskListStore {
 
     }
 
-    async getTaskTime(taskId){
+    async getTaskTime(username){
 
         try {
 
             await api.post(`/tasks/total-task-time`, {
-                taskId
+                username
             })
             .then((response) => {
-                console.log(response)
-                return response
+                console.log(response.data.totalTime)
+                this.taskTime = response.data.totalTime
+            })
+
+        }catch(e){
+            console.log(e);
+        }
+
+    }
+
+    async getActivitiesList(username){
+
+        try {
+
+            await api.post(`/tasks/ongoing-task-activities`, {
+                username
+            })
+            .then((response) => {
+                this.activitiesList = response.data.activities
+                console.log(this.activitiesList)
             })
 
         }catch(e){
@@ -147,12 +168,16 @@ export default class TaskListStore {
         this.taskList = taskList
     }
 
-    setTimerValue(value){
-        this.timerValue = value
-    }
-
     setSelectedTask(task){
         this.selectedTask = task
+    }
+
+    get time(){
+        return this.taskTime
+    }
+
+    get activities(){
+        return this.activitiesList
     }
 
     constructor () {
@@ -161,10 +186,15 @@ export default class TaskListStore {
             activities: observable,
             selectedTask: observable,
             setTaskList: action,
-            setTimerValue: action,
             setSelectedTask: action,
             getTasks: action,
-            newTask: action
+            newTask: action,
+            getTaskTime: action,
+            lapTask: action,
+            getActivitiesList: action,
+            taskTime: observable,
+            time: computed,
+            activities: computed
       })
     }
 

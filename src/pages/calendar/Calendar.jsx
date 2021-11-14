@@ -38,7 +38,9 @@ const CalendarPage = inject('calendar', 'taskList', 'login')(observer((props) =>
 	}, [])
 
 	async function getTaskList(){
+		
 		await taskList.getTasks(login.userInfo.username)
+		
 		taskList.taskList.map(task => lista.push(task.dueDate))
 		setDateList(lista)
 		setLoading(false)

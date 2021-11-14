@@ -10,6 +10,7 @@
     "bootstrap": "^4.6.0",
     "electron": "^12.2.2",
     "electron-squirrel-startup": "^1.0.0",
+    "express": "^4.17.1",
     "format-number-with-string": "0.0.2",
     "mobx": "^6.3.2",
     "mobx-react": "^7.2.0",
@@ -30,7 +31,7 @@
   },
   "scripts": {
     "electron": "electron .",
-    "start": "react-scripts start && electron .",
+    "start": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

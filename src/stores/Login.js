@@ -159,26 +159,78 @@ export default class LoginStore {
 
     }
 
-    async changeUserInfo(username, newUsername, birthdate, email){
+    async sendEmailForgotPassword(email) {
 
-        try {
+        try{
 
-            await api.post(`/update-profile-info`, {
-                username,
-                newUsername,
-                birthdate,
+            await api.post('/send-email-forgot-password', {
                 email
-            })
-            .then((response) => {
-                console.log(response)
+            }).then((response) => {
+                
+                console.log(response.status)
+                if (response.status == 200) return true 
+                else return false
             })
 
         }catch(e){
-            console.log(e);
+
+            console.log(e)
+
+        }
+
+
+    }
+
+    async updateProfileInfo(newUsername, email, password, newPassword){
+
+        const user = this.userInfo.username
+
+        try{
+
+            await api.post('/update-profile-info', {
+                username: user,
+                newUsername,
+                email,
+                password,
+                newPassword
+            }).then((response) => {
+                
+                console.log(response.status)
+                return response
+
+            })
+
+        }catch(e){
+
+            console.log(e)
+
         }
 
     }
 
+    async getProfileInfo(username){
+
+        try{
+
+            await api.post('/get-profile-info', {
+                username
+            }).then((response) => {
+                
+                console.log(response.status)
+                this.setUserInfo(response.data);
+                return response
+
+            })
+
+        }catch(e){
+
+            console.log(e)
+
+        }
+
+    }
+
+    
     setUserInfo (data) {
 
         console.log("data", data)

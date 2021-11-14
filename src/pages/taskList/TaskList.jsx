@@ -101,13 +101,16 @@ const TaskList = inject('taskList', 'login')(observer((props) => {
     }
 
     async function doUnassignIssue () {
+
         setLoading(true)
+
         try{
 
             const response = await taskList.cancelAssign(
                 taskList.taskList[selectedIssueDetails].id,
                 login.userInfo.username
             )
+            
             console.log(response)
             
             if(taskList.assignmentCanc == false){
@@ -177,6 +180,8 @@ const TaskList = inject('taskList', 'login')(observer((props) => {
             setLoading(false)
     
         }, 2000);
+
+        setSelectedIssueDetails(taskList.taskList.length)
 
     }
 
@@ -433,7 +438,7 @@ const TaskList = inject('taskList', 'login')(observer((props) => {
                                                 variant="outline-secondary" 
                                                 disabled={login.projectsInfo.length == 0}
                                                 onClick={() => setShowNewTask(true)}>
-                                                    <div style={{marginBottom: '10px'}}>
+                                                    <div>
                                                         Adicionar
                                                     </div>
                                         </Button>

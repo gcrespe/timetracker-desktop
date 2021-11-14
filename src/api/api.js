@@ -4,7 +4,7 @@ import axios from "axios";
 // http://localhost:3000
 
 const api = axios.create({
-  baseURL: "https://timetracker-restapi.herokuapp.com/api",
+  baseURL: "http://localhost:3001/api",
 });
 
 axios.interceptors.request.use(
@@ -13,6 +13,7 @@ axios.interceptors.request.use(
         return config
     },
     error => {
+        console.log("API error")
         return Promise.reject(error);
     }
 )

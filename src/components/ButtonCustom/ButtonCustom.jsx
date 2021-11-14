@@ -9,13 +9,13 @@ const ButtonCustom = (props) => {
             <style type="text/css">
                 {`
                 .btn-outline-secondary {
-                border-color: #112d4e;
-                color: #112d4e;
+                border-color: #1B2735;
+                color: #1B2735;
                 }
                 .btn-outline-secondary:hover {
-                background-color: #112d4e;
+                background-color: #1B2735;
                 color: #ffffff;
-                border-color: #112d4e;
+                border-color: #1B2735;
                 }
                 `}
             </style>

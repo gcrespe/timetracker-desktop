@@ -113,7 +113,7 @@ const Home = inject('login', 'taskList', 'timerStore')(observer((props) => {
 				await taskList.finishTask(
 					login.userInfo.username,
 					login.ongoingTask.id,
-					timerStore.timer.totalMilliSeconds - timerStore.lapTime
+					timerStore.lapTime
 				)
 
 			}catch(e){
@@ -135,7 +135,11 @@ const Home = inject('login', 'taskList', 'timerStore')(observer((props) => {
 
 	async function lapTimer(){
 
-		if(timerStore.timer.totalMilliSeconds - timerStore.lapTime < 60000){
+		console.log(timerStore.timer.totalMilliSeconds)
+		console.log(timerStore.lapTime)
+		console.log(timerStore.timer.totalMilliSeconds - timerStore.lapTime)
+
+		if(timerStore.timer.totalMilliSeconds < 60000){
 			setNotificationMessage("Não é possível finalizar uma atividade em menos de um minuto");
 			setNotification(true);
 		}else {
@@ -147,7 +151,7 @@ const Home = inject('login', 'taskList', 'timerStore')(observer((props) => {
 				await taskList.lapTask(
 					login.userInfo.username,
 					login.ongoingTask.id,
-					timerStore.timer.totalMilliSeconds - timerStore.lapTime
+					timerStore.timer.totalMilliSeconds
 				)
 
 			}catch(e){
@@ -191,15 +195,8 @@ const Home = inject('login', 'taskList', 'timerStore')(observer((props) => {
 		
 	}, [])
 
-	useEffect(() => {
-
-		localStorage.setItem("mainDisplay", timerStore.mainDisplay);
-
-	}, [timerStore.mainDisplay])
-
 	async function handleAddProject(){
 
-		
 		setIsLoadingNewProject(true);
 
 		await login.addProject(nomeProjeto, descricaoProjeto, entregaProjeto, categoriaProjeto, corProjeto)
@@ -236,6 +233,17 @@ const Home = inject('login', 'taskList', 'timerStore')(observer((props) => {
 	async function getOngoingTask(){
 
 		await login.getOngoingTask(login.userInfo.username);
+		await taskList.getTaskTime(login.userInfo.username);
+
+		console.log("lapss " + timerStore.laps);
+
+		if(timerStore.laps == 0 || timerStore.laps == ''){
+			
+			await taskList.getActivitiesList(login.userInfo.username);
+			timerStore.setLaps(taskList.activities)
+			timerStore.setTimer(taskList.activities)	
+
+		}
 
 	}
 
@@ -283,12 +291,6 @@ const Home = inject('login', 'taskList', 'timerStore')(observer((props) => {
 								<InputGroup className="mb-3">
 									<FormControl aria-label="Entrega" placeholder={"Entrega"} onChange={(e) => setEntregaProjeto(e.target.value)}/>
 								</InputGroup>
-								<div>
-									Cor do projeto
-								</div>
-								<InputGroup className="mb-3">
-									<FormControl aria-label="Entrega" placeholder={"Cor"} onChange={(e) => setCorProjeto(e.target.value)}/>
-								</InputGroup>
 							</Modal.Body>
 							<Modal.Footer>
 								<Button variant="outline-secondary" style={{width: '25%'}} onClick={() => setKey("project")}>
@@ -312,7 +314,7 @@ const Home = inject('login', 'taskList', 'timerStore')(observer((props) => {
 						!isLoadingTasks ?
 
 							timerStore.laps != 0 ?
-	
+
 								<>
 									<div style={{textAlign: 'left', fontSize: 18, fontWeight: 'lighter'}}>
 										Acompanhe o desenvolvimento de suas atividades na lista abaixo
@@ -409,14 +411,14 @@ const Home = inject('login', 'taskList', 'timerStore')(observer((props) => {
 																	{project.dueDate != null ? project.dueDate.replaceAll("-", "/") : null}
 																</div>
 															</Card.Title>
-															<Card.Text style={{marginLeft: '15px', backgroundColor: '#ffffff'}}>
+															<Card.Text style={{marginLeft: '10px', backgroundColor: '#ffffff', overflow: 'scroll'}}>
 																{project.description}
 															</Card.Text>
 														</Card.Body>
 														<ListGroup className="list-group-flush">
-															<ListGroupItem style={{border: 'none', marginLeft: '15px'}}>Total de tarefas: {project.totalTasks}</ListGroupItem>
-															<ListGroupItem style={{border: 'none', marginLeft: '15px'}}>Total de tarefas restantes: {project.remainingTasks}</ListGroupItem>
-															<ListGroupItem style={{border: 'none', marginLeft: '15px'}}>Total de tarefas realizadas: {project.doneTasks}</ListGroupItem>
+															<ListGroupItem style={{border: 'none', marginLeft: '10px'}}>Total de tarefas: {project.totalTasks}</ListGroupItem>
+															<ListGroupItem style={{border: 'none', marginLeft: '10px'}}>Total de tarefas restantes: {project.remainingTasks}</ListGroupItem>
+															<ListGroupItem style={{border: 'none', marginLeft: '10px'}}>Total de tarefas realizadas: {project.doneTasks}</ListGroupItem>
 														</ListGroup>
 														{/* <Card.Body>
 															<ButtonCustom text={"Details"}/>
