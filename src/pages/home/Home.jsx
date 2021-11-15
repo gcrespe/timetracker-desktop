@@ -35,6 +35,10 @@ const Home = inject('login', 'taskList', 'timerStore')(observer((props) => {
 	let secondButton;
 	let thirdButton
 
+	const formatDate = (date) => {
+		return date.getDate().toString()+"/"+(date.getUTCMonth() +1 ).toString()+"/"+date.getFullYear()
+	}
+
 	if (!timerStore.isRunning) {
 
 		firstButton = (
@@ -99,9 +103,9 @@ const Home = inject('login', 'taskList', 'timerStore')(observer((props) => {
 
 	async function finishTask(){
 
-		if(timerStore.timer.milliseconds < 60000){
+		if(timerStore.laps.length < 1){
 
-			setNotificationMessage("Não é possível finalizar uma tarefa em menos de um minuto");
+			setNotificationMessage("Realize pelo menos uma atividade nessa tarefa.");
 			setNotification(true);
 
 		}else {
@@ -125,6 +129,7 @@ const Home = inject('login', 'taskList', 'timerStore')(observer((props) => {
 			setNotificationMessage("Tarefa finalizada");
 			setNotification(true);
 			timerStore.resetTimer()
+			taskList.resetOngoingTask()
 			login.ongoingTask = null
 
 			setIsLoadingTasks(false)
@@ -139,7 +144,7 @@ const Home = inject('login', 'taskList', 'timerStore')(observer((props) => {
 		console.log(timerStore.lapTime)
 		console.log(timerStore.timer.totalMilliSeconds - timerStore.lapTime)
 
-		if(timerStore.timer.totalMilliSeconds < 60000){
+		if(timerStore.timer.totalMilliSeconds - timerStore.lapTime < 60000){
 			setNotificationMessage("Não é possível finalizar uma atividade em menos de um minuto");
 			setNotification(true);
 		}else {
@@ -235,13 +240,10 @@ const Home = inject('login', 'taskList', 'timerStore')(observer((props) => {
 		await login.getOngoingTask(login.userInfo.username);
 		await taskList.getTaskTime(login.userInfo.username);
 
-		console.log("lapss " + timerStore.laps);
-
-		if(timerStore.laps == 0 || timerStore.laps == ''){
+		if(timerStore.laps == 0 || timerStore.laps == '' || timerStore.laps == []){
 			
 			await taskList.getActivitiesList(login.userInfo.username);
-			timerStore.setLaps(taskList.activities)
-			timerStore.setTimer(taskList.activities)	
+			timerStore.setLaps(taskList.activities)	
 
 		}
 

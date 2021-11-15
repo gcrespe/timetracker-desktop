@@ -98,7 +98,7 @@ const Profile = inject('login')(observer((props) => {
                                     <FormControl aria-label="First name" placeholder="Senha" type="password" onChange={(e) => setPassword(e.target.value)}/>
                                 </InputGroup>
                                 <InputGroup className="mb-3" style={{width: '29%'}}>
-                                    <FormControl aria-label="First name" placeholder={"Nova senha"} onChange={(e) => setNewPassword(e.target.value)}/>
+                                    <FormControl aria-label="First name" placeholder={"Nova senha"} type="password" onChange={(e) => setNewPassword(e.target.value)}/>
                                 </InputGroup>
                                 
                             </div>

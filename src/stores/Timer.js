@@ -21,11 +21,13 @@ export default class Timer {
         return this.milliseconds + this.savedMilliseconds;
     }
 
+    setTotalMilliSeconds(milliseconds){
+        this.savedMilliseconds = milliseconds
+    }
+
     get display() {
 
-        console.log(this.milliseconds);
-
-        const tenMilliSeconds = parseInt((this.totalMilliSeconds + this.loadedMilliseconds) / 10, 10);
+        const tenMilliSeconds = parseInt((this.totalMilliSeconds) / 10, 10);
 
         const seconds = parseInt(tenMilliSeconds / 100, 10);
         const minutes = parseInt(seconds / 60, 10);
@@ -34,17 +36,13 @@ export default class Timer {
         return `${format(hours, '00')} : ${format(minutes, '00')} : ${format(seconds % 60, '00')}`;
     }
 
-    setTime(milliseconds){
-        this.loadedMilliseconds = milliseconds;
-    }
-
     constructor (initialMilliseconds = 0) {
         makeObservable(this, {
             display: computed,
             totalMilliSeconds: computed,
             reset: action,
             saveTime: action,
-            setTime: action,
+            setTotalMilliSeconds: action,
             savedMilliseconds: observable,
             milliseconds: observable,
             loadedMilliseconds: observable

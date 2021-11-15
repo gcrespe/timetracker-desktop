@@ -8,7 +8,6 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.4",
     "bootstrap": "^4.6.0",
-    "electron": "^12.2.2",
     "electron-squirrel-startup": "^1.0.0",
     "express": "^4.17.1",
     "express-favicon": "^2.0.1",
@@ -32,10 +31,20 @@
   },
   "scripts": {
     "electron": "electron .",
-    "start": "node server.js",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "yourappid",
+    "extends": null,
+    "win": {
+      "target": "NSIS",
+      "icon": "build/icon.ico"
+    }
   },
   "eslintConfig": {
     "extends": [
@@ -56,7 +65,7 @@
     ]
   },
   "devDependencies": {
-    "electron-packager": "^15.4.0",
-    "electron-winstaller": "^5.0.0"
+    "electron-builder": "^22.13.1",
+    "electron": "^12.2.2"
   }
 }

@@ -5,9 +5,9 @@ import { useHistory } from 'react-router-dom'
 import { Button, ListGroup, Card, ListGroupItem, Toast, Spinner, Modal, InputGroup, FormControl, Form, Dropdown} from 'react-bootstrap'
 import { inject, observer } from 'mobx-react'
 
-const TaskList = inject('taskList', 'login')(observer((props) => {
+const TaskList = inject('taskList', 'login', 'timerStore')(observer((props) => {
 
-    const { taskList, login } = props;
+    const { taskList, login, timerStore } = props;
 
     const history = useHistory();
 
@@ -91,6 +91,11 @@ const TaskList = inject('taskList', 'login')(observer((props) => {
                     setNotification(true);
         
                     setLoading(false)
+
+                    taskList.assigned = true;
+
+                    taskList.getActivitiesList(login.userInfo.username);
+			        timerStore.setLaps(taskList.activities)	
         
         
                 }, 2000);
@@ -127,6 +132,7 @@ const TaskList = inject('taskList', 'login')(observer((props) => {
                 }, 2000);
 
             }else {
+
                 setTimeout(() => {                
 
                     getTaskList();
@@ -136,7 +142,8 @@ const TaskList = inject('taskList', 'login')(observer((props) => {
         
                     setLoading(false)
         
-        
+                    taskList.assignmentCanc = false;
+
                 }, 2000);
             }
         }catch(e){
@@ -172,16 +179,16 @@ const TaskList = inject('taskList', 'login')(observer((props) => {
             prioridade
         );
 
-        taskList.getTasks(login.userInfo.username)
+        await taskList.getTasks(login.userInfo.username)
         
+        setTaskListState(taskList.taskList);
+
         setTimeout(() => {
             
             history.push('/taskList')
             setLoading(false)
     
         }, 2000);
-
-        setSelectedIssueDetails(taskList.taskList.length)
 
     }
 

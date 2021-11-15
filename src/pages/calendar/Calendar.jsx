@@ -10,7 +10,7 @@ const CalendarPage = inject('calendar', 'taskList', 'login')(observer((props) =>
 	const { calendar, taskList, login } = props
 
 	const formatDate = (date) => {
-		return date.getDate().toString()+"-"+(date.getUTCMonth() +1 ).toString()+"-"+date.getFullYear()
+		return date.getDate().toString()+"/"+(date.getUTCMonth() +1 ).toString()+"/"+date.getFullYear()
 	}
 
 	const startDate = new Date()

@@ -7,7 +7,6 @@ export default class TimerStore {
 	isRunning = false;
 	timer = 0;
 	startTime = 0;
-
 	laps = 0;
 
 	get mainDisplay() {
@@ -43,7 +42,7 @@ export default class TimerStore {
 	}
 
 	lapTimer() {
-		console.log(this.timer.milliseconds)
+		console.log(this.laps)
 		this.laps.push(new Timer(this.timer.totalMilliSeconds - this.lapTime));
 	}
 
@@ -67,24 +66,23 @@ export default class TimerStore {
 		this.timer.reset();
 		this.laps = [];
 		this.isRunning = false;
-	}
-
-	setTimer(laps){
-		
-		var totalseconds = 0;
-
-		laps.map((lap) => {
-			totalseconds += lap.seconds;
-		})
-
-		this.timer.setTime(totalseconds * 1000);
-		this.timer.saveTime()
+		this.startTime = 0;
 	}
 
 	setLaps(laps){
+		
+		var totalSeconds = 0;
+
 		laps.map((lap) => {
-			this.laps.push(new Timer(lap.seconds * 1000));
+			if(lap.seconds > 0){
+				totalSeconds = totalSeconds + lap.seconds;
+				this.laps.push(new Timer(lap.seconds * 1000));
+			}
 		})
+
+		console.log("total  " + totalSeconds)
+
+		this.timer.setTotalMilliSeconds(totalSeconds * 1000);
 
 		console.log(this.laps)
 	}
@@ -105,7 +103,6 @@ export default class TimerStore {
 			timer: observable,
 			startTime: observable,
 			laps: observable
-
 		})
 
 		this.isRunning = false;

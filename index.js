@@ -20,7 +20,7 @@ function createWindow(){
         resizable: false
     });
 
-    window.loadURL("http://localhost:3000");
+    window.loadURL("https://timetracker-desktop.herokuapp.com");
 }
 
 app.on("ready", () => {

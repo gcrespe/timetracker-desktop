@@ -155,7 +155,6 @@ export default class TaskListStore {
             })
             .then((response) => {
                 this.activitiesList = response.data.activities
-                console.log(this.activitiesList)
             })
 
         }catch(e){
@@ -178,6 +177,12 @@ export default class TaskListStore {
 
     get activities(){
         return this.activitiesList
+    }
+
+    resetOngoingTask(){
+        this.selectedTask = null;
+        this.taskTime = 0;
+        this.assigned = false;
     }
 
     constructor () {
