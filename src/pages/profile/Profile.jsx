@@ -67,11 +67,6 @@ const Profile = inject('login')(observer((props) => {
                     <>
                         <div className="ProfileHeaderWrapper">
                             <div className="ProfileHeader">
-                                <div className="ProfilePicture">
-                                    <div style={{width: '100%', height: '100%', borderRadius: '50%'}}>
-                                        <img src={profile} className="profile-picture" alt="logo" style={{marginTop: '15%'}}/>
-                                    </div>
-                                </div>
                                 <div className="ProfileName">
                                         {login.userInfo.username}
                                     <div className="ProfileText">

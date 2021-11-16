@@ -315,7 +315,7 @@ const Home = inject('login', 'taskList', 'timerStore')(observer((props) => {
 					{
 						!isLoadingTasks ?
 
-							timerStore.laps != 0 ?
+							timerStore.laps.length > 0 ?
 
 								<>
 									<div style={{textAlign: 'left', fontSize: 18, fontWeight: 'lighter'}}>

@@ -1,43 +1,28 @@
-# Getting Started with Create React App
+# Bem vindo ao Timetracker!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+O Timetracker é um projeto criado a partir do projeto de extensão ERUS e tem como objetivo principal o desenvolvimento de uma aplicação que tenha uma utilidade no meio social de alguma forma.
+O foco do Timetracker é ser uma aplicação de gerenciamento de horas, onde é possível criar projetos e atividades e acompanhar o desenvolvimento dos mesmos, observando principalmente o tempo gasto
 
-## Available Scripts
+## Criação
 
-In the project directory, you can run:
+Inicialmente, a ideia era de ser um projeto para gerenciamento de equipes. Por conta de mudanças ao longo do desenvolvimento do projeto, ele precisou ser simplificado e hoje
+é uma ferramenta para uso pessoal, mas que pode ser usada para acompanhar qualquer tipo de projeto
 
-### `yarn start`
+### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Inicia o projeto em [http://localhost:3000](http://localhost:3000).
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### `npm run electron`
 
-### `yarn test`
+Inicia a visualização em Electron, como na aplicação real. É necessário que a aplicação já esteja rodando, e por padrão irá renderizar o projeto que está no Heroku
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `npm run build`
 
-### `yarn build`
+Realiza o build do projeto na pasta Build. Gera uma build otimizada para performance, mas é valido lembrar que os projetos em ReactJS são um pouco mais pesados do que outros projetos.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `npm run dist`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Gera um executável do electron com base no conteúdo da pasta Build.
 
 ## Learn More
 
@@ -45,26 +30,8 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+## Outros projetos
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Também existem outros dois projetos que fazem parte deste, que são 
+[Timetracker Web](https://github.com/gcrespe/timetracker-webpage)
+[Timetracker API](https://github.com/gcrespe/timetracker-api)

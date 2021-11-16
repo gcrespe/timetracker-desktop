@@ -50,6 +50,7 @@ const TaskList = inject('taskList', 'login', 'timerStore')(observer((props) => {
     }
 
     function secondsToHms(d) {
+
         d = Number(d);
     
         var h = Math.floor(d / 3600);
@@ -57,19 +58,38 @@ const TaskList = inject('taskList', 'login', 'timerStore')(observer((props) => {
         var s = Math.floor(d % 3600 % 60);
     
         return ('0' + h).slice(-2) + ":" + ('0' + m).slice(-2) + ":" + ('0' + s).slice(-2);
+
     }
 
     async function doAssignIssue () {
-        setLoading(true)
-        try{
 
-            const response = await taskList.assign(
-                taskListState[selectedIssueDetails].id,
-                login.userInfo.username
-            )
-            console.log(response)
+        setLoading(true)
+
+        try{
             
             if(taskList.assigned == false){
+
+                const response = await taskList.assign(
+                    taskListState[selectedIssueDetails].id,
+                    login.userInfo.username
+                )
+
+                setTimeout(() => {  
+                    
+                    console.log(response)
+
+                    getTaskList();
+
+                    setNotificationMessage("Pronto. Agora pode acompanhar sua tarefa na tela inicial")
+                    setNotification(true);
+        
+                    setLoading(false)
+
+                    taskList.assigned = true;
+
+                }, 2000);
+
+            }else {
 
                 setTimeout(() => {   
                     
@@ -81,28 +101,12 @@ const TaskList = inject('taskList', 'login', 'timerStore')(observer((props) => {
                     setLoading(false)
     
                 }, 2000);
-
-            }else {
-                setTimeout(() => {                
-
-                    getTaskList();
-
-                    setNotificationMessage("Pronto. Agora pode acompanhar sua tarefa na tela inicial")
-                    setNotification(true);
-        
-                    setLoading(false)
-
-                    taskList.assigned = true;
-
-                    taskList.getActivitiesList(login.userInfo.username);
-			        timerStore.setLaps(taskList.activities)	
-        
-        
-                }, 2000);
+            
             }
         }catch(e){
             throw e;
         }
+
     }
 
     async function doUnassignIssue () {
@@ -116,7 +120,6 @@ const TaskList = inject('taskList', 'login', 'timerStore')(observer((props) => {
                 login.userInfo.username
             )
             
-            console.log(response)
             
             if(taskList.assignmentCanc == false){
 
@@ -149,6 +152,11 @@ const TaskList = inject('taskList', 'login', 'timerStore')(observer((props) => {
         }catch(e){
             throw e;
         }
+
+        taskList.assigned = false;
+        timerStore.laps = [];
+        login.ongoingtask = null;
+
     }
 
     useEffect(() => {
@@ -470,7 +478,7 @@ const TaskList = inject('taskList', 'login', 'timerStore')(observer((props) => {
                                             </style>
                                             <Button style={{width: '100%', height: '60%'}} 
                                                     variant="outline-secondary" 
-                                                    disabled={taskList.taskList[selectedIssueDetails].status != "NOT ASSIGNED"}
+                                                    disabled={(taskList.taskList[selectedIssueDetails].status != "NOT ASSIGNED") || taskList.assigned == true}
                                                     onClick={() => doAssignIssue()}>
                                                         <div>
                                                         {loading ? 
