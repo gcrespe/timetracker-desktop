@@ -1,5 +1,7 @@
 {
-  "name": "app",
+  "name": "timetracker",
+  "author": {"email": "gcrespe3@hotmail.com", "name": "Giuliano Crespe"},
+  "description": "Projeto de gerenciamento de horas pessoais criado a partir do projeto de extensão ERUS",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

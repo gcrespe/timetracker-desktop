@@ -17,7 +17,8 @@ function createWindow(){
         width: 1200,
         height: 700,
         frame: true,
-        resizable: false
+        resizable: false,
+        icon: __dirname + '/logo192.png'
     });
 
     window.loadURL("https://timetracker-desktop.herokuapp.com");
